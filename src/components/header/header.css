@@ -297,8 +297,12 @@
     }
 
     .bottomHeader .container {
+        padding: 10px;
         .nav {
             gap: 20px;
+            .categoryNavList  {
+                top: calc(100% + 17px) !important;
+            }
         }
 
         .navLinks li {
