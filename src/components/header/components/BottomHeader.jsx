@@ -1,5 +1,4 @@
 import { MdArrowDropDown } from "react-icons/md";
-import { FaArrowTurnDown } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaUserPlus } from "react-icons/fa6";
@@ -28,6 +27,7 @@ function ButtonHeader() {
     }]
     const linkLocation = useLocation()
     const [iscategoryNavListOpen, setIscategoryNavListOpen] = useState(false)
+    const [isNavOpen, setIsNavOpen] = useState(false)
 
     useEffect(() => {
         fetch('https://dummyjson.com/products/categories')
@@ -40,12 +40,25 @@ function ButtonHeader() {
     return (
         <div className="bottomHeader">
             <div className="container">
+                <button
+                    className="mobileNavToggle"
+                    type="button"
+                    aria-expanded={isNavOpen}
+                    aria-label="Toggle navigation menu"
+                    onClick={() => {
+                        setIscategoryNavListOpen(false)
+                        setIsNavOpen(!isNavOpen)
+                    }}
+                >
+                    <AiOutlineMenu />
+                </button>
                 <div className="nav">
                     <div className="categoryNav">
                         <div className="categoryBtn" onClick={() => {
+                            setIsNavOpen(false)
                             setIscategoryNavListOpen(!iscategoryNavListOpen)
                         }}>
-                            <AiOutlineMenu />
+                            <AiOutlineMenu className="categoryBtn-svg1" />
                             <p>Categories</p>
                             <MdArrowDropDown className="categoryBtn-svg2" />
                         </div>
@@ -57,7 +70,7 @@ function ButtonHeader() {
                             }
                         </div>
                     </div>
-                    <ul className="navLinks">
+                    <ul className={`navLinks ${isNavOpen ? 'activeNavLinks' : ''}`}>
                         {
                             navLinks.map((link) => {
                                 return <li key={link.title} className={linkLocation.pathname === link.href ? 'activeLink' : ''}><Link to={link.href}>{link.title}</Link></li>
@@ -65,7 +78,7 @@ function ButtonHeader() {
                         }
                     </ul>
                 </div>
-                <div className="navLinkIcons">
+                <div className={`navLinkIcons ${isNavOpen ? 'activeNavLinkIcons' : ''}`}>
                     <div className="icon">
                         <PiSignInBold />
                     </div>

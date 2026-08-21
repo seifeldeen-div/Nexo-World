@@ -6,7 +6,7 @@ import { LuShoppingCart } from "react-icons/lu";
 
 function TopHeader() {
     return (
-        <header className="topHeader">
+        <div className="topHeader">
             <div className="container">
                 <div className="headerLogoContainer">
                     <Link className="headerLogo" to={'./'}><img src={Logo} alt="Logo" /></Link>
@@ -26,7 +26,7 @@ function TopHeader() {
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
     )
 }
 

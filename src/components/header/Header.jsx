@@ -4,10 +4,10 @@ import BottomHeader from "./components/BottomHeader"
 
 function Header() {
     return (
-        <>
+        <header>
             <TopHeader />
             <BottomHeader />
-        </>
+        </header>
     )
 }
 
