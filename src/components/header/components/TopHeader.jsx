@@ -8,7 +8,9 @@ function TopHeader() {
     return (
         <header className="topHeader">
             <div className="container">
-                <Link className="headerLogo" to={'./'}><img src={Logo} alt="Logo" /></Link>
+                <div className="headerLogoContainer">
+                    <Link className="headerLogo" to={'./'}><img src={Logo} alt="Logo" /></Link>
+                </div>
                 <form action="" className="searchBox">
                     <input type="text" name="search" id="search" placeholder="Search For Products" />
                     <button type="submit" ><FaSearch /></button>
