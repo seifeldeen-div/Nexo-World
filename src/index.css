@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --DM-font-family: "DM Sans", sans-serif;
+    --Inter-font-family: "Inter", sans-serif;
+    --main-color: #0090f0;
+    --p-color: #7b7b7b;
+    --bg-color: #f3f3f3;
+    --white-color: #fff;
+    --color-heading: #253237;
+    --border-color: #d6d6d6d5;
+}
+
+body {
+    background-color: var(--white-color);
+    font-family: var(--Inter-font-family);
+}
+
+img {
+    width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-heading);
+    font-family: var(--DM-font-family);
+}
+
+span {
+    color: var(--main-color);
+}
+
+p {
+    color: var(--p-color);
+}
+
+input,
+button,
+textarea,
+select {
+    outline: none;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-heading);
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1350px;
+}
+
+
+h1 {
+    color: var(--main-color);
+}
