@@ -9,6 +9,20 @@
     --border-color: #d6d6d6d5;
 }
 
+.headingTopContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    .showAllProducts {
+        button {
+            padding: 12px 20px;
+            font-size: 15px;
+        }
+    }
+}
+
 .heading {
     position: relative;
     margin-bottom: 20px;
@@ -19,14 +33,14 @@
         content: "";
         position: absolute;
         bottom: -1px;
-        width: 200px;
+        width: 100px;
         height: 2px;
         background-color: var(--main-color);
     }
 
     h2 {
         color: var(--main-color);
-        font-size: 40px;
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
         text-transform: capitalize;
         letter-spacing: 2px;
         margin-bottom: 5px;
@@ -36,11 +50,18 @@
 
 
 .productsContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
+    width: 100%;
+    min-width: 0;
+
+    .swiper {
+        width: 100%;
+        padding: 10px 4px 35px;
+    }
+
+    .swiper-slide {
+        height: auto;
+        min-width: 0;
+    }
 }
 
 
@@ -49,7 +70,7 @@
 .product {
     overflow: hidden;
     position: relative;
-    flex: 1 1 150px;
+    height: 100%;
     background: var(--white-color);
     padding: 25px 15px;
     border: 1px solid var(--border-color);
@@ -126,6 +147,7 @@
     }
 
     &:hover {
+        transition: 0.5s ease;
         transform: translateY(-10px);
         border-color: rgba(0, 144, 240, 0.45);
 
@@ -166,7 +188,7 @@
         img {
             position: relative;
             z-index: 1;
-            width: 250px;
+            width: min(100%, 250px);
 
             transition:
                 transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
@@ -281,6 +303,7 @@
 
     &:hover {
         transform: translateY(5px);
+        cursor: pointer;
 
         button {
             bottom: 25px;
@@ -356,6 +379,55 @@
             &:nth-child(5) {
                 transform: translateY(-2px);
             }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .headingTopContainer {
+        align-items: flex-start;
+        gap: 12px;
+
+        .showAllProducts button {
+            padding: 12px 15px;
+            margin-top: 17px;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+    }
+
+    .heading {
+        flex: 1;
+        min-width: 0;
+        padding-right: 8px;
+
+        h2 {
+            letter-spacing: 1px;
+        }
+
+        p {
+            display: -webkit-box;
+            overflow: hidden;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+    }
+
+    .productsContainer .swiper {
+        padding-right: 12px;
+        padding-left: 0;
+    }
+
+    .product {
+        padding: 18px 12px;
+
+        .imgProduct {
+            padding: 0 8px;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 18px;
         }
     }
 }

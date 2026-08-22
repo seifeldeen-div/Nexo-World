@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Header from '../components/header/Header'
 import Hero from '../components/Hero/Hero'
 import Products from '../components/Products/Products'
+import './Style/Home.css'
 
 function Home() {
     const [produts, setProducts] = useState([])
@@ -40,14 +41,13 @@ function Home() {
 
     return (
         <>
-            <Header />
             <Hero />
             {isloading ? (
                 <h1>Loading....</h1>
             ) : (
                 categories.map((category) => {
                     return (
-                        <Products key={category} title={category.replace("-"," ")} data={produts[category]} />
+                        <Products key={category} title={category.replace("-", " ")} data={produts[category]} />
                     )
                 })
             )}

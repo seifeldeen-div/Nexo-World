@@ -1,14 +1,12 @@
 import ProductCard from './components/ProductCard'
-import './Products.css'
-import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import './Products.css'
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
 import { Autoplay, FreeMode, Pagination } from 'swiper/modules';
-import { PiMicrosoftPowerpointLogoDuotone } from 'react-icons/pi';
 
 
 function Products(props) {
@@ -16,19 +14,38 @@ function Products(props) {
     return (
         <div className="products slide">
             <div className="container">
-                <div className="heading">
-                    <h2>{props.title}</h2>
-                    <p>{props.data.description}</p>
+                <div className="headingTopContainer">
+                    <div className="heading">
+                        <h2>{props.title}</h2>
+                        <p>{props.data.description}</p>
+                    </div>
+                    <div className="showAllProducts">
+                        <button className='btn'>Show All Products</button>
+                    </div>
                 </div>
                 <div className="productsContainer">
                     <Swiper
-                        loop={true}
+                        loop={props.data.length > 4}
                         autoplay={{
                             delay: 2000,
                             disableOnInteraction: true,
                         }}
-                        slidesPerView={4}
-                        spaceBetween={30}
+                        slidesPerView={1.15}
+                        spaceBetween={12}
+                        breakpoints={{
+                            480: {
+                                slidesPerView: 2,
+                                spaceBetween: 14,
+                            },
+                            768: {
+                                slidesPerView: 3,
+                                spaceBetween: 18,
+                            },
+                            1100: {
+                                slidesPerView: 4,
+                                spaceBetween: 24,
+                            },
+                        }}
                         freeMode={true}
                         pagination={{
                             clickable: true,
@@ -37,7 +54,7 @@ function Products(props) {
                         className="mySwiper"
                     >
                         {props.data.map((item) => {
-                            return <SwiperSlide><ProductCard item={item} /></SwiperSlide>
+                            return <SwiperSlide key={item.id}><ProductCard productID={item.id} item={item} /></SwiperSlide>
                         })}
                     </Swiper>
                 </div>
