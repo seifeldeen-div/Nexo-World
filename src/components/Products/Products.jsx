@@ -7,6 +7,7 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
 import { Autoplay, FreeMode, Pagination } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 
 
 function Products(props) {
@@ -20,7 +21,7 @@ function Products(props) {
                         <p>{props.data.description}</p>
                     </div>
                     <div className="showAllProducts">
-                        <button className='btn'>Show All Products</button>
+                        <Link to={'/allProducts'} className='btn'>Show All Products</Link>
                     </div>
                 </div>
                 <div className="productsContainer">

@@ -11,10 +11,10 @@ function ProductCard(props) {
             <div className="product">
                 <Link to={`/products/${props.item.id}`}>
                     <div className="imgProduct">
-                        <img src={props.item.images[0]} alt="" />
+                        <img src={props.item.images[0]} alt={props.item.titel} />
                     </div>
                     <div className="content">
-                        <h3>{props.item.title}</h3>
+                        <h3>{props.item.title.replace("-", " ")}</h3>
                     </div>
                     <div className="rate">
                         <TiStarFullOutline />
@@ -26,13 +26,13 @@ function ProductCard(props) {
                     <div className="price">
                         <p><span>$ {props.item.price}</span></p>
                     </div>
-                    <div className="icons">
-                        <a><Link to={'./'}><FaCartArrowDown /></Link></a>
-                        <a><Link to={'./'}><FaHeart /></Link></a>
-                        <a><Link to={'./'}><FaShare /></Link></a>
-                    </div>
-                    <button className="btn">Buy Now</button>
                 </Link>
+                <div className="icons">
+                    <Link to={'./'} aria-label="Add to cart"><FaCartArrowDown /></Link>
+                    <Link to={'./'} aria-label="Add to wishlist"><FaHeart /></Link>
+                    <Link to={'./'} aria-label="Share product"><FaShare /></Link>
+                </div>
+                <button className="btn">Buy Now</button>
             </div>
         </>
     )

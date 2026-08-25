@@ -114,7 +114,7 @@
 .bottomHeader {
     /* padding: 10px; */
     background-color: var(--main-color);
-    height: 50px;
+    height: 60px;
 
     .container {
         height: 100%;

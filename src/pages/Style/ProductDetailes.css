@@ -629,8 +629,7 @@
                 width: 100%;
 
                 .name {
-                    /* font-size: clamp(1rem, 8vw, 2.7rem) !important; */
-                    font-size: 15px !important;
+                    font-size: clamp(1.8rem, 6vw, 2.5rem);
                 }
 
                 .description {
