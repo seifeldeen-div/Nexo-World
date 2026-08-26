@@ -8,6 +8,13 @@
     --color-heading: #253237;
     --border-color: #d6d6d6d5;
 }
+.header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 8888888;
+    background-color: white;
+}
 
 .topHeader {
     .container {

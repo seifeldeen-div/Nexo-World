@@ -45,17 +45,9 @@ function Home() {
         <>
             <Hero />
             {isloading ? (
-                // <div className="spinner">
-                //         <BeatLoader
-                //             color="#0090f0"
-                //             cssOverride={{
-                //                 margin: '10px 0 0 0'
-                //             }}
-                //             margin={1}
-                //             size={23}
-                //         />
-                // </div>
-                <SlideProductLoading />
+                categories.map(() => {
+                    return <SlideProductLoading />
+                })
             ) : (
                 categories.map((category) => {
                     return (

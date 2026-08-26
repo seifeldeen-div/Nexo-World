@@ -1,3 +1,11 @@
+.spinner {
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 #app {
     height: 100%;
 }
@@ -25,7 +33,7 @@
 
 .heroBanner {
     position: relative;
-    height: min(42.5vw, 650px);
+    height: 510px;
     overflow: hidden;
     border-radius: 8px;
 }
@@ -224,6 +232,7 @@
 }
 
 .productsContainerShow {
+    margin: 10px 0 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

@@ -4,7 +4,7 @@ import BottomHeader from "./components/BottomHeader"
 
 function Header() {
     return (
-        <header>
+        <header className="header">
             <TopHeader />
             <BottomHeader />
         </header>
