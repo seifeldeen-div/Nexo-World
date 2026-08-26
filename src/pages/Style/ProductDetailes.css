@@ -9,6 +9,13 @@
     --border-color: #d6d6d6d5;
 }
 
+.spinner {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .productDetailes {
     padding: 70px 50px;
     overflow: hidden;

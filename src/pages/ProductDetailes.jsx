@@ -6,6 +6,7 @@ import './Style/ProductDetailes.css'
 import { TiStarFullOutline } from "react-icons/ti"
 import { FaHeart, FaShare } from "react-icons/fa";
 import Products from "../components/Products/Products";
+import { DotLoader } from "react-spinners";
 
 function ProductDetailes() {
 
@@ -34,7 +35,12 @@ function ProductDetailes() {
 
 
     if (isLoading) return (
-        <h1>Loading.....</h1>
+        <div className="spinner">
+            <DotLoader
+                color="#0090f0"
+                size={60}
+            />
+        </div>
     )
     if (!product) return (
         <h1>Product Not Found</h1>
