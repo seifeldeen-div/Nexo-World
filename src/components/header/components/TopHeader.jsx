@@ -9,7 +9,7 @@ import { CartContext } from "../../context/CartContext";
 function TopHeader() {
 
 
-    const {cartItems} = useContext(CartContext)
+    const { cartItems } = useContext(CartContext)
 
     return (
         <div className="topHeader">
@@ -21,14 +21,16 @@ function TopHeader() {
                     <input type="text" name="search" id="search" placeholder="Search For Products" />
                     <button type="submit" ><FaSearch /></button>
                 </form>
-                <div className="heagerIcons">
+                <div className="headerIcons">
                     <div className="icon wishList">
                         <CiHeart />
                         <span className="count">0</span>
                     </div>
                     <div className="icon cart">
+                        <Link to="/cart">
                         <LuShoppingCart />
                         <span className="count">{cartItems.length}</span>
+                        </Link>
                     </div>
                 </div>
             </div>

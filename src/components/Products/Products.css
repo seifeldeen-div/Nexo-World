@@ -408,9 +408,8 @@
 
     .icons {
         a:nth-child(1) {
-            background-color: white;
-            /* color: var(--main-color) !important; */
-            border: var(--main-color) solid 1px;
+            background-color: rgb(2, 169, 188);
+            pointer-events: none;
         }
     }
 }

@@ -8,6 +8,7 @@
     --color-heading: #253237;
     --border-color: #d6d6d6d5;
 }
+
 .header {
     position: sticky;
     top: 0;
@@ -76,7 +77,7 @@
             }
         }
 
-        .heagerIcons {
+        .headerIcons {
             display: flex;
             flex-shrink: 0;
             gap: 30px;
@@ -89,11 +90,14 @@
 
                 &:hover {
                     transform: scale(0.9);
-                    color: var(--main-color);
                 }
 
                 svg {
                     font-size: 30px;
+
+                    &:hover {
+                        color: var(--main-color);
+                    }
                 }
 
                 .count {
@@ -305,9 +309,11 @@
 
     .bottomHeader .container {
         padding: 10px;
+
         .nav {
             gap: 20px;
-            .categoryNavList  {
+
+            .categoryNavList {
                 top: calc(100% + 17px) !important;
             }
         }
