@@ -4,11 +4,43 @@ import { Routes, Route } from "react-router-dom"
 import Header from "./components/header/Header"
 import AllProductsPage from "./pages/AllProductsPage"
 import Cart from "./pages/Cart"
+import { Toaster } from "react-hot-toast"
+import ScrollToTop from "./components/ScrollToTop"
 
 function App() {
   return (
     <>
       <Header />
+      <ScrollToTop />
+      <Toaster
+        position="bottom-right"
+        gutter={12}
+        toastOptions={{
+          duration: 3200,
+          className: "app-toast",
+          style: {
+            maxWidth: "min(420px, calc(100vw - 32px))",
+            padding: "10px",
+            border: "1px solid rgba(37, 50, 55, 0.08)",
+            borderRadius: "14px",
+            background: "#ffffff",
+            color: "#0080ff",
+            boxShadow: "0 16px 40px rgba(37, 50, 55, 0.16)",
+          },
+          success: {
+            iconTheme: {
+              primary: "#0090f0",
+              secondary: "#ffffff",
+            },
+          },
+          error: {
+            iconTheme: {
+              primary: "#e05252",
+              secondary: "#ffffff",
+            },
+          },
+        }}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products/:productID" element={<ProductDetailes />} />

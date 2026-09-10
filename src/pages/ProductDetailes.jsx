@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
+import { Link, useParams } from "react-router-dom"
 import { BsCartCheck } from "react-icons/bs";
 
 import './Style/ProductDetailes.css'
 import { TiStarFullOutline } from "react-icons/ti"
 import { FaHeart, FaShare } from "react-icons/fa";
 import Products from "../components/Products/Products";
-import { DotLoader } from "react-spinners";
 import SlideProductLoading from "../components/Products/components/SlideProductLoading";
 import HeroProductDetaillesLoading from "../components/Products/components/HeroProductDetaillesLoading";
+import { CartContext } from "../components/context/CartContext";
+import toast from "react-hot-toast";
 
 function ProductDetailes() {
 
@@ -16,6 +17,8 @@ function ProductDetailes() {
     const [product, setProduct] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     const [productsCategory, setProductsCategoty] = useState([])
+    const { cartItems, addToCart } = useContext(CartContext)
+    const isInCart = product ? cartItems.some((item) => item.id === product.id) : false
 
     useEffect(() => {
         fetch(`https://dummyjson.com/products/${productID}`)
@@ -32,8 +35,6 @@ function ProductDetailes() {
             .then(res => res.json())
             .then(data => setProductsCategoty(data.products))
     }, [product?.category])
-
-    console.log(productsCategory)
 
     return (
         <>
@@ -78,7 +79,40 @@ function ProductDetailes() {
                                 <p>{product.description}</p>
                             </div>
                             <div className="shopBtn">
-                                <button className="btn">Add to cart {<BsCartCheck />}</button>
+                                <button
+                                    className={`btn product-cart-button ${isInCart ? "is-added" : ""}`}
+                                    type="button"
+                                    onClick={() => {
+                                        if (isInCart) {
+                                            toast("Already added to cart", { icon: "✓" })
+                                            return
+                                        }
+                                        addToCart(product)
+                                        toast.success(
+                                            <div className="toast-wrapper">
+                                                <div className="image">
+                                                    <img src={product.images[0]} alt={product.title} />
+                                                </div>
+                                                <div className="content">
+                                                    <strong>{product.title}</strong>
+                                                    <p>Added To Cart</p>
+                                                </div>
+                                                <div className="btn">
+                                                    <Link to='/cart'>View Cart</Link>
+                                                </div>
+                                            </div>
+                                            , { duration: 3000 }
+                                        )
+                                    }}
+                                >
+                                    <span
+                                        key={isInCart ? "added" : "add"}
+                                        className="button-label"
+                                    >
+                                        {isInCart ? "Added" : "Add to cart"}
+                                    </span>
+                                    <BsCartCheck />
+                                </button>
                                 <div className="icons">
                                     <FaHeart />
                                     <FaShare />

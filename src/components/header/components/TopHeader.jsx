@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import Logo from '../../../assets/img/logo.png'
-import { FaSearch } from "react-icons/fa";
+import { FaRegHeart, FaSearch } from "react-icons/fa";
 import { CiHeart } from "react-icons/ci";
 import { LuShoppingCart } from "react-icons/lu";
 import { useContext } from "react";
@@ -23,7 +23,7 @@ function TopHeader() {
                 </form>
                 <div className="headerIcons">
                     <div className="icon wishList">
-                        <CiHeart />
+                        <FaRegHeart />
                         <span className="count">0</span>
                     </div>
                     <div className="icon cart">

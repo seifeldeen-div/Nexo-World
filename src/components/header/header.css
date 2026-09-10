@@ -117,6 +117,12 @@
                     align-items: center;
                 }
             }
+
+            .wishList {
+                svg {
+                    font-size: 25px;
+                }
+            }
         }
     }
 }
