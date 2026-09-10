@@ -3,12 +3,16 @@ import { CartContext } from "../components/context/CartContext"
 import { MdDelete } from "react-icons/md"
 import { FaCartPlus } from "react-icons/fa"
 import './Style/Cart.css'
+import { Link } from "react-router-dom"
 
 function Cart() {
-    const { cartItems = [] } = useContext(CartContext)
-    const safeCartItems = Array.isArray(cartItems) ? cartItems : []
 
-    const total = safeCartItems.reduce((sum, item) => sum + Number(item.price || 0), 0)
+    const { cartItems = [], increaseItemCart, decreaseItemCart, deleteCrtItem } = useContext(CartContext)
+
+    const safeCartItems = Array.isArray(cartItems) ? cartItems : []
+    const total = safeCartItems.reduce((sum, item) => sum + Number(item.price || 0) * (item.quantity || 1), 0)
+
+    console.log(cartItems)
 
     return (
         <section className="cartPage">
@@ -24,7 +28,7 @@ function Cart() {
                             <div className="emptyCart">
                                 <FaCartPlus />
                                 <h3>Cart is empty</h3>
-                                <button className="emptyBtn">Shop Products</button>
+                                <Link to='/allProducts' className="emptyBtn">Shop Products</Link>
                             </div>
                         ) : (
                             safeCartItems.map((item, index) => (
@@ -41,11 +45,17 @@ function Cart() {
                                         <span className="cartPrice">${item.price}</span>
                                     </div>
                                     <div className="cartQuantity">
-                                        <button type="button" aria-label="Decrease quantity">-</button>
-                                        <span className="quantity">1</span>
-                                        <button type="button" aria-label="Increase quantity">+</button>
+                                        <button type="button" aria-label="Decrease quantity" onClick={() => {
+                                            decreaseItemCart(item.id)
+                                        }}>-</button>
+                                        <span className="quantity">{item.quantity || 1}</span>
+                                        <button type="button" aria-label="Increase quantity" onClick={() => {
+                                            increaseItemCart(item.id)
+                                        }}>+</button>
                                     </div>
-                                    <button type="button" className="deleteCart" aria-label="Delete item">
+                                    <button type="button" className="deleteCart" aria-label="Delete item" onClick={() => {
+                                        deleteCrtItem(item.id)
+                                    }}>
                                         <MdDelete />
                                     </button>
                                 </div>
