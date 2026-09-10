@@ -253,9 +253,28 @@
     }
 }
 
+@media (max-width: 768px) {
+    .heroBanner {
+        height: 45vw;
+        border-radius: 6px;
+    }
+
+    .container .btnsFilter {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        padding: 16px 0 22px;
+    }
+
+    .container .filterBtn {
+        min-height: 43px;
+        padding: 10px 10px;
+        font-size: 13px;
+    }
+}
+
 @media (max-width: 600px) {
     .heroBanner {
-        height: 42.5vw;
+        height: 50vw;
         border-radius: 0;
     }
 
@@ -265,6 +284,7 @@
 
     .container .bottomContainer h2 {
         margin-top: 6px;
+        font-size: 1.5rem;
     }
 
     .container .btnsFilter {
@@ -276,7 +296,30 @@
     .container .filterBtn {
         min-height: 42px;
         padding: 9px 8px;
-        font-size: 13px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .heroBanner {
+        height: 55vw;
+    }
+
+    .container .bottomContainer h2 {
+        font-size: 1.3rem;
+    }
+
+    .container .btnsFilter {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+        padding: 12px 0 18px;
+    }
+
+    .container .filterBtn {
+        min-height: 40px;
+        padding: 8px 6px;
+        font-size: 11px;
+        min-width: 0;
     }
 }
 
