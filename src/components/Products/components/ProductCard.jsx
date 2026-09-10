@@ -1,19 +1,29 @@
 import { TiStarFullOutline } from "react-icons/ti";
-import { FaShare, FaHeart, FaCartArrowDown } from "react-icons/fa";
+import { FaShare, FaHeart, FaCartArrowDown, FaCheckCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
+import '../Products.css'
 
 // https://dummyjson.com/products/1
 
 function ProductCard(props) {
     const { cartItems, addToCart } = useContext(CartContext)
 
-    console.log(cartItems)
+    const isInCart = cartItems.some((i => i.id === props.item.id))
+
+    const [InCart, setIsInCart] = useState(isInCart)
 
     return (
         <>
-            <div className="product">
+            <div className={`product ${InCart ? 'inCart' : ''}`}>
+
+                <span className="statueCard">
+                    <FaCheckCircle />
+                    <span>Added</span>
+                </span>
+
+
                 <Link to={`/products/${props.item.id}`}>
                     <div className="imgProduct">
                         <img src={props.item.images[0]} alt={props.item.titel} />
@@ -33,8 +43,9 @@ function ProductCard(props) {
                     </div>
                 </Link>
                 <div className="icons">
-                    <Link onClick={()=> {
+                    <Link onClick={() => {
                         addToCart(props.item)
+                        setIsInCart((isInCart => !isInCart))
                     }} to={'./'} aria-label="Add to cart"><FaCartArrowDown /></Link>
                     <Link to={'./'} aria-label="Add to wishlist"><FaHeart /></Link>
                     <Link to={'./'} aria-label="Share product"><FaShare /></Link>

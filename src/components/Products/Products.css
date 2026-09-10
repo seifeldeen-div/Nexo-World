@@ -75,6 +75,24 @@
     border: 1px solid var(--border-color);
     border-radius: 8px;
 
+    .statueCard {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        z-index: 22;
+        padding: 10px 3px;
+        transform: translatey(-35px);
+        transition: 0.3s ease;
+        svg,span {
+            color: rgb(2, 188, 169);
+        }
+        span {
+            padding: 0 3px;
+            font-weight: 600;
+        }
+    }
+
     button {
         position: absolute;
         bottom: -55px;
@@ -378,6 +396,21 @@
             &:nth-child(5) {
                 transform: translateY(-2px);
             }
+        }
+    }
+}
+
+.product.inCart {
+
+    .statueCard {
+        transform: translateY(0);
+    }
+
+    .icons {
+        a:nth-child(1) {
+            background-color: white;
+            /* color: var(--main-color) !important; */
+            border: var(--main-color) solid 1px;
         }
     }
 }
