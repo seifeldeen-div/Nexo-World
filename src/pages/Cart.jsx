@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { CartContext } from "../components/context/CartContext"
 import { MdDelete } from "react-icons/md"
 import { FaCartPlus } from "react-icons/fa"
@@ -9,11 +9,21 @@ import PageTransition from "../components/PageTransition"
 function Cart() {
 
     const { cartItems = [], increaseItemCart, decreaseItemCart, deleteCrtItem } = useContext(CartContext)
+    const [removingItems, setRemovingItems] = useState([])
 
     const safeCartItems = Array.isArray(cartItems) ? cartItems : []
     const total = safeCartItems.reduce((sum, item) => sum + Number(item.price || 0) * (item.quantity || 1), 0)
 
-    console.log(cartItems)
+    const handleDelete = (id) => {
+        if (removingItems.includes(id)) return
+
+        setRemovingItems((prev) => [...prev, id])
+
+        window.setTimeout(() => {
+            deleteCrtItem(id)
+            setRemovingItems((prev) => prev.filter((itemId) => itemId !== id))
+        }, 360)
+    }
 
     return (
         <PageTransition>
@@ -34,7 +44,7 @@ function Cart() {
                                 </div>
                             ) : (
                                 safeCartItems.map((item, index) => (
-                                    <div className="cartItem" key={item.id ?? index}>
+                                    <div className={`cartItem ${removingItems.includes(item.id) ? 'removing' : ''}`} key={item.id ?? index}>
                                         <div className="cartImage">
                                             <img src={item.images?.[0]} alt={item.title} />
                                         </div>
@@ -56,7 +66,7 @@ function Cart() {
                                             }}>+</button>
                                         </div>
                                         <button type="button" className="deleteCart" aria-label="Delete item" onClick={() => {
-                                            deleteCrtItem(item.id)
+                                            handleDelete(item.id)
                                         }}>
                                             <MdDelete />
                                         </button>

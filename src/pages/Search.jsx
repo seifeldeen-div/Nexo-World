@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useLocation } from "react-router-dom"
 import ProductCard from "../components/Products/components/ProductCard"
 import './Style/Search.css'
+import PageTransition from "../components/PageTransition"
 
 function Search() {
     const location = useLocation()
@@ -23,22 +24,24 @@ function Search() {
     }, [query])
 
     return (
-        <div className="searchPage">
-            <div className="container">
-                <div className="searchHeader">
-                    <h1>Search Results</h1>
-                    <span className="searchQuery">{query}</span>
-                </div>
+        <PageTransition>
+            <div className="searchPage">
+                <div className="container">
+                    <div className="searchHeader">
+                        <h1>Search Results</h1>
+                        <span className="searchQuery">{query}</span>
+                    </div>
 
-                <div className="products">
-                    {searchResult.length > 0 ? (
-                        searchResult.map((item) => <ProductCard key={item.id} item={item} />)
-                    ) : (
-                        <div className="emptySearch">No products found</div>
-                    )}
+                    <div className="products">
+                        {searchResult.length > 0 ? (
+                            searchResult.map((item) => <ProductCard key={item.id} item={item} />)
+                        ) : (
+                            <div className="emptySearch">No products found</div>
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
+        </PageTransition>
     )
 }
 
