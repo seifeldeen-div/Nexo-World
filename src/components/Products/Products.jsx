@@ -55,7 +55,9 @@ function Products(props) {
                         className="mySwiper"
                     >
                         {props.data.map((item) => {
-                            return <SwiperSlide key={item.id}><ProductCard productID={item.id} item={item} /></SwiperSlide>
+                            return <SwiperSlide key={item.id}>\
+                                <ProductCard productID={item.id} item={item} />
+                            </SwiperSlide>
                         })}
                     </Swiper>
                 </div>

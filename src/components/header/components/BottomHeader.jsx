@@ -5,26 +5,16 @@ import { FaUserPlus } from "react-icons/fa6";
 import { PiSignInBold } from "react-icons/pi";
 import { AiOutlineMenu } from "react-icons/ai";
 
-
 function ButtonHeader() {
-
     const [categories, setCategories] = useState([])
-    const navLinks = [{
-        title: 'Home',
-        href: '/'
-    }, {
-        title: 'About',
-        href: '/about'
-    }, {
-        title: 'Accessories',
-        href: '/accessories'
-    }, {
-        title: 'Blog',
-        href: '/blog'
-    }, {
-        title: 'Contact',
-        href: '/contact'
-    }]
+    const navLinks = [
+        { title: 'Home', href: '/' },
+        { title: 'About', href: '/about' },
+        { title: 'Accessories', href: '/accessories' },
+        { title: 'Blog', href: '/blog' },
+        { title: 'Contact', href: '/contact' }
+    ]
+
     const linkLocation = useLocation()
     const [iscategoryNavListOpen, setIscategoryNavListOpen] = useState(false)
     const [isNavOpen, setIsNavOpen] = useState(false)
@@ -35,7 +25,15 @@ function ButtonHeader() {
             .then(data => setCategories(data));
     }, [])
 
-    // console.log(categories)
+    useEffect(() => {
+        setIscategoryNavListOpen(false)
+        setIsNavOpen(false)
+    }, [linkLocation.pathname])
+
+    const closeCategoryNav = () => {
+        setIscategoryNavListOpen(false)
+        setIsNavOpen(false)
+    }
 
     return (
         <div className="bottomHeader">
@@ -65,7 +63,15 @@ function ButtonHeader() {
                         <div className={`categoryNavList ${iscategoryNavListOpen ? 'activeCategoryNavList' : ''}`}>
                             {
                                 categories.map((category) => {
-                                    return <Link key={category.slug} to={category.slug}>{category.name}</Link>
+                                    return (
+                                        <Link
+                                            key={category.slug}
+                                            to={`/category/${category.slug}`}
+                                            onClick={closeCategoryNav}
+                                        >
+                                            {category.name}
+                                        </Link>
+                                    )
                                 })
                             }
                         </div>
