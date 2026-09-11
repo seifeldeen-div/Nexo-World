@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import hero1 from '../../assets/img/banner_Hero1.jpg'
 import hero2 from '../../assets/img/banner_Hero2.jpg'
 import hero3 from '../../assets/img/banner_Hero3.jpg'
+import PageTransition from '../PageTransition';
 
 const banner = [
     {
@@ -30,34 +31,36 @@ const banner = [
 ]
 function Hero() {
     return (
-        <div className='hero'>
-            <div className="container">
-                <Swiper
-                    loop={true}
-                    autoplay={{
-                        delay: 2000,
-                        disableOnInteraction: false,
-                    }} pagination={true} speed={800} modules={[Pagination, Autoplay]} className="mySwiper">
-                    {banner.map((img, index) => {
-                        return (
-                            <SwiperSlide key={index}>
-                                <div className="textContentSlider">
-                                    <h4>{img.heading4}</h4>
-                                    <h3>{img.heading3}</h3>
-                                    <p>{img.para}</p>
-                                    <div>
-                                        <Link className='btn' to={'./'}>Shop Now</Link>
+        <PageTransition>
+            <div className='hero'>
+                <div className="container">
+                    <Swiper
+                        loop={true}
+                        autoplay={{
+                            delay: 2000,
+                            disableOnInteraction: false,
+                        }} pagination={true} speed={800} modules={[Pagination, Autoplay]} className="mySwiper">
+                        {banner.map((img, index) => {
+                            return (
+                                <SwiperSlide key={index}>
+                                    <div className="textContentSlider">
+                                        <h4>{img.heading4}</h4>
+                                        <h3>{img.heading3}</h3>
+                                        <p>{img.para}</p>
+                                        <div>
+                                            <Link className='btn' to={'./'}>Shop Now</Link>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className='sliderImage'>
-                                    <img src={img.src} alt={img.heading4} />
-                                </div>
-                            </SwiperSlide>
-                        )
-                    })}
-                </Swiper>
+                                    <div className='sliderImage'>
+                                        <img src={img.src} alt={img.heading4} />
+                                    </div>
+                                </SwiperSlide>
+                            )
+                        })}
+                    </Swiper>
+                </div>
             </div>
-        </div>
+        </PageTransition>
     )
 }
 
