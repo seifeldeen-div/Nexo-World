@@ -5,6 +5,7 @@ import { CiHeart } from "react-icons/ci";
 import { LuShoppingCart } from "react-icons/lu";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import SearchBox from "../../SearchBox";
 
 function TopHeader() {
 
@@ -17,10 +18,7 @@ function TopHeader() {
                 <div className="headerLogoContainer">
                     <Link className="headerLogo" to={'./'}><img src={Logo} alt="Logo" /></Link>
                 </div>
-                <form action="" className="searchBox">
-                    <input type="text" name="search" id="search" placeholder="Search For Products" />
-                    <button type="submit" ><FaSearch /></button>
-                </form>
+                <SearchBox />
                 <div className="headerIcons">
                     <div className="icon wishList">
                         <FaRegHeart />

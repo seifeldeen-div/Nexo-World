@@ -1,0 +1,106 @@
+.searchPage {
+    min-height: calc(100vh - 128px);
+    background:
+        radial-gradient(circle at 78% 5%, rgba(0, 144, 240, 0.08), transparent 16%),
+        linear-gradient(180deg, #eef8ff 0%, #ffffff 100%);
+    padding: 30px 0 70px;
+}
+
+.searchPage .container {
+    width: min(1440px, calc(100vw - 48px));
+    margin: 0 auto;
+}
+
+.searchPage .searchHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 26px 30px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #ffffff, #eef8ff);
+    border: 1px solid rgba(0, 144, 240, 0.08);
+    box-shadow: 0 18px 40px rgba(37, 50, 55, 0.08);
+    margin-bottom: 24px;
+}
+
+.searchPage .searchHeader h1 {
+    color: var(--color-heading);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.2;
+    font-weight: 800;
+    margin: 0;
+}
+
+.searchPage .searchHeader .searchQuery {
+    color: var(--main-color);
+    background: var(--bg-color);
+    border-radius: 999px;
+    padding: 8px 14px;
+    border: 1px solid rgba(0, 144, 240, 0.16);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.searchPage .products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+.searchPage .emptySearch {
+    width: 100%;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px dashed var(--main-color);
+    border-radius: 16px;
+    color: var(--color-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .searchPage .searchHeader {
+        padding: 22px 24px;
+    }
+
+    .searchPage .products {
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .searchPage .container {
+        width: min(100%, calc(100vw - 24px));
+    }
+
+    .searchPage .searchHeader {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .searchPage .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .searchPage {
+        padding: 16px 0 36px;
+    }
+
+    .searchPage .searchHeader {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .searchPage .products {
+        grid-template-columns: 1fr;
+    }
+}
