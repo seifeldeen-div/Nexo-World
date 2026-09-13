@@ -127,6 +127,142 @@
     }
 }
 
+.searchBoxWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.searchBoxWrapper .searchBox {
+    position: relative;
+    z-index: 2;
+}
+
+.searchSuggestions {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: var(--white-color);
+    border: 1px solid rgba(0, 144, 240, 0.24);
+    border-radius: 16px;
+    box-shadow: 0 24px 70px rgba(37, 50, 55, 0.16);
+    padding: 8px;
+    list-style: none;
+    animation: suggestionsSlide 260ms ease both;
+}
+
+.searchSuggestions::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 26px;
+    width: 14px;
+    height: 14px;
+    background: var(--white-color);
+    border-left: 1px solid rgba(0, 144, 240, 0.24);
+    border-top: 1px solid rgba(0, 144, 240, 0.24);
+    transform: rotate(45deg);
+}
+
+.searchSuggestionItem {
+    margin: 0;
+}
+
+.searchSuggestion {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 12px;
+    border-radius: 12px;
+    font-family: var(--DM-font-family);
+    color: var(--color-heading);
+    cursor: pointer;
+    transition: transform 260ms ease, background 260ms ease, color 260ms ease, box-shadow 260ms ease;
+    text-align: left;
+}
+
+.searchSuggestion:hover {
+    background: linear-gradient(135deg, rgba(0, 144, 240, 0.12), rgba(0, 144, 240, 0.04));
+    color: var(--main-color);
+    box-shadow: 0 10px 24px rgba(0, 144, 240, 0.12);
+}
+
+.suggestionImage {
+    width: 46px;
+    height: 46px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 144, 240, 0.12);
+    background: var(--bg-color);
+}
+
+.suggestionText {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.suggestionTitle {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-heading);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.searchSuggestion:hover .suggestionTitle {
+    color: var(--main-color);
+}
+
+.suggestionMeta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    color: var(--p-color);
+}
+
+.suggestionCategory {
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.suggestionPrice {
+    font-weight: 700;
+    color: var(--main-color);
+}
+
+.suggestionIcon {
+    color: var(--main-color);
+    font-size: 13px;
+    opacity: 0.88;
+    transform: translateX(-4px);
+    transition: transform 260ms ease, opacity 260ms ease;
+}
+
+.searchSuggestion:hover .suggestionIcon {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+@keyframes suggestionsSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scaleY(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scaleY(1);
+    }
+}
 
 .bottomHeader {
     /* padding: 10px; */
