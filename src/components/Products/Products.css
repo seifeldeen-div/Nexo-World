@@ -489,6 +489,7 @@
 
             svg {
                 color: #fff;
+                border: none;
             }
 
             &:hover {

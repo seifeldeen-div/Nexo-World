@@ -244,7 +244,7 @@
 
 .removeWish {
     position: absolute;
-    top: calc(40% + 79px);
+    top: calc(40% + 85px);
     right: 12px;
     left: auto;
     z-index: 40;
@@ -270,7 +270,7 @@
 }
 
 .removeWish svg {
-    font-size: 18px;
+    font-size: 25px;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
@@ -411,7 +411,7 @@
     }
 
     .removeWish {
-        width: 36px;
+        width: 43px;
     }
 }
 

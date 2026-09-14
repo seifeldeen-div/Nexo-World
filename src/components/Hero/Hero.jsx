@@ -48,7 +48,7 @@ function Hero() {
                                         <h3>{img.heading3}</h3>
                                         <p>{img.para}</p>
                                         <div>
-                                            <Link className='btn' to={'./'}>Shop Now</Link>
+                                            <Link className='btn' to='/allproducts'>Shop Now</Link>
                                         </div>
                                     </div>
                                     <div className='sliderImage'>
