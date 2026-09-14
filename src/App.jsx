@@ -53,7 +53,11 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/search" element={<Search />} />
           <Route path="/category/:categoryName" element={<CategoryProducts />} />
-          <Route path="/wishlist" element={<WishList />}></Route>
+          <Route path="/wishlist" element={<WishList />} />
+          <Route path="'/about" />
+          <Route path="'/accessories" />
+          <Route path="'/blog" />
+          <Route path="'/contact" />
         </Routes>
       </AnimatePresence>
     </>

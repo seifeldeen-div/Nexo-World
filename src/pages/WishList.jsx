@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
-import { FaHeart, FaHeartBroken } from "react-icons/fa"
+import { FaHeart } from "react-icons/fa"
+import { MdDelete } from "react-icons/md"
 import { Link } from "react-router-dom"
 import { wishContext } from "../components/context/WishlistContext"
 import ProductCard from "../components/Products/components/ProductCard"
@@ -110,7 +111,7 @@ function WishList() {
                                                 onClick={() => handleRemove(item.id)}
                                                 aria-label="Remove from wishlist"
                                             >
-                                                <FaHeartBroken />
+                                                <MdDelete />
                                             </button>
                                             <ProductCard item={item} />
                                         </motion.div>

@@ -48,7 +48,18 @@ function ProductCard(props) {
                     <Link to='/wishlist'>View Wishlist</Link>
                 </div>
             </div>
-            , { duration: 3000 }
+            , {
+                duration: 3000,
+                style: {
+                    maxWidth: "min(420px, calc(100vw - 32px))",
+                    padding: "12px 14px",
+                    background: "linear-gradient(135deg, #ff2d55, #ff5d7e)",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "16px",
+                    boxShadow: "0 16px 40px rgba(255, 45, 85, 0.35)",
+                },
+            }
         )
     }
 

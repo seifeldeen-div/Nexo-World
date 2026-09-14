@@ -442,6 +442,9 @@
         animation: wishBadgeBeat 1.5s ease-in-out infinite;
         transform-origin: center;
     }
+    span {
+        color: white;
+    }
 }
 
 @keyframes wishBadgePop {
