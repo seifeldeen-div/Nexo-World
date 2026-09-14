@@ -16,6 +16,7 @@ import heroImage from "../assets/img/banner_Hero1.jpg"
 import heroImage2 from "../assets/img/banner_Hero2.jpg"
 import heroImage3 from "../assets/img/banner_Hero3.jpg"
 import bannerImage from "../assets/img/bannar2_Products_Page.png"
+import accImage1 from "../assets/img/img-1.jpg"
 import PageTransition from "../components/PageTransition"
 import './Style/Accessories.css'
 
@@ -33,21 +34,21 @@ const featured = [
         price: 129,
         old: 159,
         tag: "Best Seller",
-        img: heroImage,
+        img: heroImage2,
     },
     {
         name: "Pulse Smart Watch",
         price: 199,
         old: 249,
         tag: "New",
-        img: heroImage2,
+        img: heroImage3,
     },
     {
         name: "Echo Mini Speaker",
         price: 59,
         old: 79,
         tag: "Sale",
-        img: heroImage3,
+        img: heroImage,
     },
 ]
 

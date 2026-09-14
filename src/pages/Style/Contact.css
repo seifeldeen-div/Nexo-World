@@ -130,6 +130,15 @@
     box-shadow: 0 10px 26px rgba(37, 50, 55, 0.16);
 }
 
+.contactOnlineIcon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 144, 240, 0.2);
+}
+
 .contactInfoSide h2 {
     margin: 0 0 8px;
     color: #1f3d4d;

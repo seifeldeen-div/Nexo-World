@@ -1,13 +1,17 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { FaArrowRight, FaCalendarAlt, FaClock, FaCommentDots } from "react-icons/fa"
-import heroImage1 from "../assets/img/banner_Hero1.jpg"
-import heroImage2 from "../assets/img/banner_Hero2.jpg"
-import heroImage3 from "../assets/img/banner_Hero3.jpg"
 import bannerImage1 from "../assets/img/bannar1_Products_Page.png"
-import bannerImage2 from "../assets/img/bannar2_Products_Page.png"
 import bannerImage3 from "../assets/img/bannar3_Products_Page.png"
 import bannerImage4 from "../assets/img/bannar4_Products_Page.png"
+import postImage2 from "../assets/img/img-2.jpg"
+import postImage3 from "../assets/img/img-3.jpg"
+import postImage4 from "../assets/img/img-4.jpg"
+import postImage5 from "../assets/img/img-5.jpg"
+import postImage6 from "../assets/img/img-6.jpg"
+import postImage7 from "../assets/img/img-7.jpg"
+import postImage8 from "../assets/img/img-8.jpg"
+import postImage9 from "../assets/img/img-9.jpg"
 import PageTransition from "../components/PageTransition"
 import toast from "react-hot-toast"
 import './Style/Blog.css'
@@ -24,7 +28,7 @@ const posts = [
         comments: 24,
         excerpt:
             "From codecs to battery life — everything you need to know before upgrading your headphones this season.",
-        img: bannerImage4,
+        img: postImage2,
     },
     {
         id: 2,
@@ -35,7 +39,7 @@ const posts = [
         comments: 9,
         excerpt:
             "Great news for our global community — faster shipping and local support just got a whole lot closer.",
-        img: bannerImage1,
+        img: postImage7,
     },
     {
         id: 3,
@@ -46,7 +50,7 @@ const posts = [
         comments: 31,
         excerpt:
             "Find the perfect wearable for your lifestyle with our breakdown of what specs actually matter.",
-        img: heroImage1,
+        img: postImage3,
     },
     {
         id: 4,
@@ -57,7 +61,7 @@ const posts = [
         comments: 17,
         excerpt:
             "We spent two weeks with the Aurora headset. Here is the honest verdict on sound, comfort and price.",
-        img: heroImage2,
+        img: postImage8,
     },
     {
         id: 5,
@@ -68,7 +72,7 @@ const posts = [
         comments: 12,
         excerpt:
             "Small daily habits that keep your devices healthy and delay that dreaded battery replacement.",
-        img: bannerImage3,
+        img: postImage4,
     },
     {
         id: 6,
@@ -79,7 +83,7 @@ const posts = [
         comments: 6,
         excerpt:
             "Bundle your favorite accessories and save up to 40% — but only while stocks last this weekend.",
-        img: bannerImage2,
+        img: postImage5,
     },
     {
         id: 7,
@@ -90,7 +94,7 @@ const posts = [
         comments: 21,
         excerpt:
             "We took a camera around our fulfillment center to show you how orders travel from shelf to door.",
-        img: heroImage3,
+        img: postImage9,
     },
 ]
 

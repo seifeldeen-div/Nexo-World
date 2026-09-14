@@ -7,7 +7,8 @@ import {
     FaPhoneAlt,
     FaRegClock,
 } from "react-icons/fa"
-import officeImage from "../assets/img/banner_Hero3.jpg"
+import officeImage from "../assets/img/img-8.jpg"
+import contactIcon from "../assets/img/icon.png"
 import PageTransition from "../components/PageTransition"
 import toast from "react-hot-toast"
 import './Style/Contact.css'
@@ -104,7 +105,7 @@ function Contact() {
                                     alt="Nexo Store"
                                 />
                                 <span className="contactImgBadge">
-                                    <FaRegClock /> Online now
+                                    Online now
                                 </span>
                             </div>
                             <h2>We're here to help</h2>

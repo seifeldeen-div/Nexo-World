@@ -12,7 +12,9 @@ import {
     FaThumbsUp,
     FaUsers,
 } from "react-icons/fa"
-import storyImage from "../assets/img/bannar1_Products_Page.png"
+import brandLogo from "../assets/img/logo.png"
+import storyImage from "../assets/img/img-6.jpg"
+import storyImage2 from "../assets/img/img-7.jpg"
 import PageTransition from "../components/PageTransition"
 import './Style/About.css'
 
@@ -65,7 +67,10 @@ function About() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.65, ease }}
                     >
-                        <span className="aboutBadge">Who we are</span>
+                        <span className="aboutBadge">
+                            <img src={brandLogo} alt="Nexo Store" className="aboutBrandLogo" />
+                            Who we are
+                        </span>
                         <h1>The Tech Store You Can <em>Trust</em></h1>
                         <p>
                             Nexo Store is built around a simple idea — great technology should come
@@ -77,6 +82,9 @@ function About() {
                         <div className="aboutStoryImg">
                             <img src={storyImage} alt="Nexo Store" />
                             <span className="aboutStoryBadge">Since 2014</span>
+                            <div className="aboutStorySecond">
+                                <img src={storyImage2} alt="Nexo Store team at work" />
+                            </div>
                         </div>
                         <div className="aboutStoryBody">
                             <span className="aboutSecSub">Our story</span>
