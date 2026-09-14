@@ -10,6 +10,10 @@ import { AnimatePresence } from "framer-motion"
 import CategoryProducts from "./pages/CategoryProducts"
 import Search from "./pages/Search"
 import WishList from "./pages/WishList"
+import About from "./pages/About"
+import Accessories from "./pages/Accessories"
+import Blog from "./pages/Blog"
+import Contact from "./pages/Contact"
 
 function App() {
   return (
@@ -54,10 +58,10 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/category/:categoryName" element={<CategoryProducts />} />
           <Route path="/wishlist" element={<WishList />} />
-          <Route path="'/about" />
-          <Route path="'/accessories" />
-          <Route path="'/blog" />
-          <Route path="'/contact" />
+          <Route path="/about" element={<About />} />
+          <Route path="/accessories" element={<Accessories />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </AnimatePresence>
     </>

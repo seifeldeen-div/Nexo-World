@@ -398,8 +398,8 @@
                         color: white;
                         display: inline-block;
                         height: 100%;
-                        display: flex;
-                        align-items: center;
+                        line-height: 3.5;
+                        width: 100%;
                     }
                 }
             }
@@ -548,6 +548,8 @@
                         min-height: 45px;
                         padding: 0 16px;
                         border-top: 1px solid rgb(255 255 255 / 0.15);
+                        display: block;
+                        line-height: 3.5;
                     }
                 }
             }
@@ -575,4 +577,25 @@
 .activeLink {
     background-color: #0280d5;
     transition: 0.5s ease;
+}
+
+
+@media screen and (max-width:1050px) {
+    .topHeader {
+        .container {
+            .headerLogoContainer {
+                .headerLogo {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+
+            .headerIcons {
+                width: 100%;
+                justify-content: space-between;
+                order: 0;
+            }
+        }
+    }
 }
