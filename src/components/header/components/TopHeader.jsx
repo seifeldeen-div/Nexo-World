@@ -6,11 +6,13 @@ import { LuShoppingCart } from "react-icons/lu";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import SearchBox from "../../SearchBox";
+import { wishContext } from "../../context/WishlistContext";
 
 function TopHeader() {
 
 
     const { cartItems } = useContext(CartContext)
+    const {wishlistContext} = useContext(wishContext)
 
     return (
         <div className="topHeader">
@@ -21,13 +23,15 @@ function TopHeader() {
                 <SearchBox />
                 <div className="headerIcons">
                     <div className="icon wishList">
-                        <FaRegHeart />
-                        <span className="count">0</span>
+                        <Link to='/wishlist'>
+                            <FaRegHeart />
+                            <span className="count">{wishlistContext.length}</span>
+                        </Link>
                     </div>
                     <div className="icon cart">
                         <Link to="/cart">
-                        <LuShoppingCart />
-                        <span className="count">{cartItems.length}</span>
+                            <LuShoppingCart />
+                            <span className="count">{cartItems.length}</span>
                         </Link>
                     </div>
                 </div>

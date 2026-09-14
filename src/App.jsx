@@ -9,6 +9,7 @@ import ScrollToTop from "./components/ScrollToTop"
 import { AnimatePresence } from "framer-motion"
 import CategoryProducts from "./pages/CategoryProducts"
 import Search from "./pages/Search"
+import WishList from "./pages/WishList"
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/search" element={<Search />} />
           <Route path="/category/:categoryName" element={<CategoryProducts />} />
+          <Route path="/wishlist" element={<WishList />}></Route>
         </Routes>
       </AnimatePresence>
     </>
