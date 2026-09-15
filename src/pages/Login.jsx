@@ -1,4 +1,5 @@
 import PageTransition from "../components/PageTransition"
+import { Link } from "react-router-dom"
 import { FaRegEye, FaLock, FaEnvelope, FaGoogle, FaApple, FaFacebookF, FaShieldAlt, FaTruck, FaHeadset } from "react-icons/fa"
 import Logo from "../assets/img/logo.png"
 import './Style/Login.css'

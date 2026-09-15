@@ -88,7 +88,7 @@ function ButtonHeader() {
                     <div className="icon">
                         <PiSignInBold />
                     </div>
-                    <Link to='/login' className="icon">
+                    <Link to='/register' className="icon">
                         <FaUserPlus />
                     </Link>
                 </div>
