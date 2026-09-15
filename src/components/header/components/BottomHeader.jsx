@@ -53,7 +53,7 @@ function ButtonHeader() {
                 <div className="nav">
                     <div className="categoryNav">
                         <div className="categoryBtn" onClick={() => {
-                            setIsNavOpen(false)
+                            setIsNavOpen(false) 
                             setIscategoryNavListOpen(!iscategoryNavListOpen)
                         }}>
                             <AiOutlineMenu className="categoryBtn-svg1" />
@@ -88,9 +88,9 @@ function ButtonHeader() {
                     <div className="icon">
                         <PiSignInBold />
                     </div>
-                    <div className="icon">
+                    <Link to='/login' className="icon">
                         <FaUserPlus />
-                    </div>
+                    </Link>
                 </div>
             </div>
         </div>
