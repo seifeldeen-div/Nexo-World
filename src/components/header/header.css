@@ -435,6 +435,10 @@
     }
 }
 
+.hideLogOutBtn {
+    display: none !important;
+}
+
 
 @media (max-width: 1050px) {
     .topHeader .container {
@@ -573,6 +577,76 @@
     }
 }
 
+
+.logout-popup {
+    font-family: var(--DM-font-family);
+    border-radius: 20px;
+    padding: 26px 24px 22px;
+    border: 1px solid rgba(0, 144, 240, 0.16);
+    box-shadow: 0 26px 70px rgba(37, 50, 55, 0.18);
+}
+
+.logout-popup .swal2-icon {
+    border-width: 3px;
+}
+
+.logout-popup .swal2-icon.swal2-warning {
+    border-color: var(--main-color);
+    color: var(--main-color);
+}
+
+.logout-popup .swal2-icon.swal2-success {
+    border-color: var(--main-color);
+    color: var(--main-color);
+}
+
+.logout-popup .swal2-icon.swal2-success .swal2-success-ring {
+    border-color: var(--main-color);
+}
+
+.logout-title {
+    color: var(--color-heading);
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.logout-text {
+    color: var(--p-color);
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    line-height: 1.6;
+}
+
+.logout-popup .swal2-timer-progress-bar {
+    background: linear-gradient(90deg, var(--main-color), #66c4ff);
+}
+
+.logout-confirm-btn {
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    border-radius: 999px !important;
+    padding: 0.625em 2em !important;
+    transition: 0.3s ease;
+}
+
+.logout-cancel-btn {
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+    border-radius: 999px !important;
+    padding: 0.625em 2em !important;
+    transition: 0.3s ease;
+}
+
+.logout-confirm-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 144, 240, 0.35);
+}
+
+.logout-cancel-btn:hover {
+    transform: translateY(-2px);
+}
 
 .activeLink {
     background-color: #0280d5;

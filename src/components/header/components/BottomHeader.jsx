@@ -2,8 +2,10 @@ import { MdArrowDropDown } from "react-icons/md";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaUserPlus } from "react-icons/fa6";
-import { PiSignInBold } from "react-icons/pi";
+import { PiSignOutBold } from "react-icons/pi";
 import { AiOutlineMenu } from "react-icons/ai";
+import { FaUser } from "react-icons/fa";
+import Swal from 'sweetalert2'
 
 function ButtonHeader() {
     const [categories, setCategories] = useState([])
@@ -53,7 +55,7 @@ function ButtonHeader() {
                 <div className="nav">
                     <div className="categoryNav">
                         <div className="categoryBtn" onClick={() => {
-                            setIsNavOpen(false) 
+                            setIsNavOpen(false)
                             setIscategoryNavListOpen(!iscategoryNavListOpen)
                         }}>
                             <AiOutlineMenu className="categoryBtn-svg1" />
@@ -85,12 +87,61 @@ function ButtonHeader() {
                     </ul>
                 </div>
                 <div className={`navLinkIcons ${isNavOpen ? 'activeNavLinkIcons' : ''}`}>
-                    <div className="icon">
-                        <PiSignInBold />
+                    <div onClick={() => {
+                        Swal.fire({
+                            title: "Log out of your account?",
+                            text: "You'll be signed out securely. Your session will end immediately.",
+                            icon: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#0090f0",
+                            cancelButtonColor: "#7b7b7b",
+                            confirmButtonText: "Yes, log out",
+                            cancelButtonText: "Cancel",
+                            reverseButtons: true,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            customClass: {
+                                popup: "logout-popup",
+                                title: "logout-title",
+                                htmlContainer: "logout-text",
+                                confirmButton: "logout-confirm-btn",
+                                cancelButton: "logout-cancel-btn"
+                            }
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                localStorage.setItem("loginBtnStatue", 'false')
+                                Swal.fire({
+                                    title: "Logged out",
+                                    text: "You have been logged out successfully.",
+                                    icon: "success",
+                                    confirmButtonColor: "#0090f0",
+                                    timer: 2500,
+                                    timerProgressBar: true,
+                                    showConfirmButton: false,
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                    customClass: {
+                                        popup: "logout-popup",
+                                        title: "logout-title",
+                                        htmlContainer: "logout-text"
+                                    }
+                                }).then(() => {
+                                    window.location.reload()
+                                })
+                            }
+                        });
+                    }} className={`icon ${localStorage.getItem("loginBtnStatue") == 'false' ? 'hideLogOutBtn' : ''} `}>
+                        <PiSignOutBold />
                     </div>
-                    <Link to='/register' className="icon">
-                        <FaUserPlus />
-                    </Link>
+                    {localStorage.getItem("loginBtnStatue") == 'false' ? (
+                        <Link to="/register" className="icon">
+                            <FaUserPlus />
+                        </Link>
+                    ) : (
+                        <Link to="/profile" className={`icon`}>
+                            <FaUser />
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>

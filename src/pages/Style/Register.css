@@ -292,6 +292,7 @@
 }
 
 .registerInputWrap input {
+    text-transform: capitalize;
     width: 100%;
     padding: 14px 52px 14px 46px;
     border: 1px solid var(--border-color, #d6d6d6d5);
@@ -481,6 +482,8 @@
     color: #0a7fdb;
     text-decoration: underline;
 }
+
+/* -----------------Show password-------------------- */
 
 /* ---------- responsive ---------- */
 

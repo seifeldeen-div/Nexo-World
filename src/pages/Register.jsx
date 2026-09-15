@@ -1,10 +1,31 @@
 import PageTransition from "../components/PageTransition"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FaRegEye, FaLock, FaEnvelope, FaGoogle, FaApple, FaFacebookF, FaUserAlt, FaTruck, FaHeadset, FaShieldAlt } from "react-icons/fa"
 import Logo from "../assets/img/logo.png"
 import './Style/Register.css'
+import { useState } from "react"
+import toast, { Toaster } from "react-hot-toast"
 
 function Register() {
+
+    const [showPassword, setShowPassword] = useState(false)
+
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("")
+
+    const registerData = {
+        'username': username,
+        'email': email,
+        'password': password
+    }
+
+    const navigate = useNavigate()
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        navigate('/login')
+    }
+
     return (
         <PageTransition>
             <section className="registerPage">
@@ -64,12 +85,18 @@ function Register() {
                                 Fill in the form below to join Nexo in less than a minute.
                             </p>
 
-                            <form className="registerForm">
+                            <form action='login' method="POST" onSubmit={(e) => {
+                                toast.success('Successfully Registered')
+                                handleSubmit(e)
+                                localStorage.setItem("registerData", JSON.stringify(registerData))
+                            }} className="registerForm">
                                 <div className="registerField">
                                     <label htmlFor="registerName">Full Name</label>
                                     <div className="registerInputWrap">
                                         <span className="registerInputIcon"><FaUserAlt /></span>
-                                        <input
+                                        <input onInput={(e) => {
+                                            setUsername(e.target.value)
+                                        }}
                                             id="registerName"
                                             type="text"
                                             name="name"
@@ -83,7 +110,9 @@ function Register() {
                                     <label htmlFor="registerEmail">Email Address</label>
                                     <div className="registerInputWrap">
                                         <span className="registerInputIcon"><FaEnvelope /></span>
-                                        <input
+                                        <input onInput={(e) => {
+                                            setEmail(e.target.value)
+                                        }}
                                             id="registerEmail"
                                             type="email"
                                             name="email"
@@ -98,14 +127,18 @@ function Register() {
                                         <label htmlFor="registerPassword">Password</label>
                                         <div className="registerInputWrap">
                                             <span className="registerInputIcon"><FaLock /></span>
-                                            <input
+                                            <input onInput={(e) => {
+                                                setPassword(e.target.value)
+                                            }}
                                                 id="registerPassword"
-                                                type="password"
+                                                type={showPassword ? 'text' : 'password'}
                                                 name="password"
                                                 placeholder="Min 8 characters"
                                                 required
                                             />
-                                            <button type="button" className="registerEye" aria-label="Show password">
+                                            <button onClick={(e) =>
+                                                setShowPassword(statue => !statue)
+                                            } type="button" className="registerEye" aria-label="Show password">
                                                 <FaRegEye />
                                             </button>
                                         </div>
@@ -117,12 +150,14 @@ function Register() {
                                             <span className="registerInputIcon"><FaLock /></span>
                                             <input
                                                 id="registerConfirm"
-                                                type="password"
+                                                type={showPassword ? 'text' : 'password'}
                                                 name="confirmPassword"
                                                 placeholder="Repeat password"
                                                 required
                                             />
-                                            <button type="button" className="registerEye" aria-label="Show password">
+                                            <button onClick={(e) =>
+                                                setShowPassword(statue => !statue)
+                                            } type="button" className="registerEye" aria-label="Show password">
                                                 <FaRegEye />
                                             </button>
                                         </div>

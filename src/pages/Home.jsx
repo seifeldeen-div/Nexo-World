@@ -45,8 +45,8 @@ function Home() {
         <>
             <Hero />
             {isloading ? (
-                categories.map(() => {
-                    return <SlideProductLoading />
+                categories.map((category) => {
+                    return <SlideProductLoading key={category} />
                 })
             ) : (
                 categories.map((category) => {

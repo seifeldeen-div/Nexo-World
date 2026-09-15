@@ -1,11 +1,44 @@
 import PageTransition from "../components/PageTransition"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { FaRegEye, FaLock, FaEnvelope, FaGoogle, FaApple, FaFacebookF, FaShieldAlt, FaTruck, FaHeadset } from "react-icons/fa"
 import Logo from "../assets/img/logo.png"
 import './Style/Login.css'
-import { Link } from "react-router-dom"
+import { useState } from "react"
+import toast from "react-hot-toast"
 
 function Login() {
+
+    const [showPassword, setShowPassword] = useState(false)
+    const userLoginData = JSON.parse(localStorage.getItem("registerData"))
+    // Object.keys(userLoginData).forEach((key)=> console.log(key, userLoginData[key]))
+
+    const [mail, setMail] = useState()
+    const [password, setPassword] = useState()
+    const navigate = useNavigate()
+
+    const handleLogin = (e, userLoginData) => {
+        e.preventDefault()
+
+        if (!userLoginData) {
+            toast.error("No registered user found")
+            return
+        }
+
+        if (userLoginData.email !== mail) {
+            toast.error("Email is incorrect")
+            return
+        }
+
+        if (userLoginData.password !== password) {
+            toast.error("Password is incorrect")
+            return
+        }
+
+        navigate("/")
+        toast.success("Successful LogedIn")
+        localStorage.setItem('loginBtnStatue', 'true')
+    }
+
     return (
         <PageTransition>
             <section className="loginPage">
@@ -65,12 +98,16 @@ function Login() {
                                 Enter your credentials to continue to your account.
                             </p>
 
-                            <form className="loginForm">
+                            <form onSubmit={(e) => {
+                                handleLogin(e, userLoginData)
+                            }} className="loginForm">
                                 <div className="loginField">
                                     <label htmlFor="loginEmail">Email Address</label>
                                     <div className="loginInputWrap">
                                         <span className="loginInputIcon"><FaEnvelope /></span>
-                                        <input
+                                        <input onInput={(e) => {
+                                            setMail(e.target.value)
+                                        }}
                                             id="loginEmail"
                                             type="email"
                                             name="email"
@@ -84,14 +121,18 @@ function Login() {
                                     <label htmlFor="loginPassword">Password</label>
                                     <div className="loginInputWrap">
                                         <span className="loginInputIcon"><FaLock /></span>
-                                        <input
+                                        <input onInput={(e) => {
+                                            setPassword(e.target.value)
+                                        }}
                                             id="loginPassword"
-                                            type="password"
+                                            type={showPassword ? 'text' : 'password'}
                                             name="password"
                                             placeholder="Enter your password"
                                             required
                                         />
-                                        <button type="button" className="loginEye" aria-label="Show password">
+                                        <button onClick={() => {
+                                            setShowPassword(statue => !statue)
+                                        }} type="button" className="loginEye" aria-label="Show password">
                                             <FaRegEye />
                                         </button>
                                     </div>

@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 
 
 function Products(props) {
-    console.log(props.data.description)
     return (
         <div className="products slide">
             <div className="container">
