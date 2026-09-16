@@ -21,28 +21,28 @@ import { useContext, useState } from "react"
 import { wishContext } from "../components/context/WishlistContext"
 import { CartContext } from "../components/context/CartContext"
 import ProfileOverview from "../components/ProfileOverview"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import WishList from "./WishList"
 import Orders from "../components/Orders"
+import ProfileEdit from "../components/ProfileEdit"
 
 const userData = JSON.parse(localStorage.getItem("registerData"))
 const keys = Object.keys(userData)
-const Data = {
+export const Data = {
     'username': userData[keys[0]],
     'email': userData[keys[1]],
 }
 
 function Profile() {
-    const [activeSection, setActiveSection] = useState()
+    const [activeSection, setActiveSection] = useState('overview')
     const { wishlistContext } = useContext(wishContext)
     const { cartItems } = useContext(CartContext)
+    const navigate = useNavigate()
 
     const handleActiveSection = (e, activeSec) => {
         e.preventDefault()
         setActiveSection(activeSec)
     }
-
-
 
 
     return (
@@ -53,7 +53,7 @@ function Profile() {
                 <div className="container">
                     <div className="profileHeader">
                         <div className="profileUser">
-                            <div className="profileAvatar">A</div>
+                            <div className="profileAvatar"> {Data.username[0]} </div>
                             <div className="profileUserInfo">
                                 <h1>{Data.username} <em>welcome back</em></h1>
                                 <p>{Data.email} <span>·</span> Member </p>
@@ -61,10 +61,14 @@ function Profile() {
                         </div>
 
                         <div className="profileHeaderActions">
-                            <button type="button" className="profileOutlineBtn">
+                            <button onClick={()=> {
+                                setActiveSection('edit')
+                            }} type="button" className="profileOutlineBtn">
                                 <FaEdit /> Edit profile
                             </button>
-                            <button type="button" className="profileSolidBtn">
+                            <button onClick={()=> {
+                                navigate("/allproducts")
+                            }} type="button" className="profileSolidBtn">
                                 <FaShoppingBag /> New order
                             </button>
                         </div>
@@ -88,7 +92,7 @@ function Profile() {
                         <div className="profileStatCard">
                             <span className="profileStatIcon amber"><FaRegStar /></span>
                             <div>
-                                <strong>0.0</strong>
+                                <strong>0</strong>
                                 <p>Loyalty points</p>
                             </div>
                         </div>
@@ -107,35 +111,29 @@ function Profile() {
                                 <p className="profileNavTitle">Account</p>
                                 <a onClick={(e) => {
                                     handleActiveSection(e, 'overview')
-                                }} to="/overview" className="profileNavLink active">
+                                }} to="/overview" className={`profileNavLink ${activeSection == 'overview' ? 'active' : ''}`} >
                                     <span className="profileNavIcon"><FaUserAlt /></span>
                                     Overview
                                 </a>
                                 <a onClick={(e) => {
+                                    handleActiveSection(e, 'edit')
+                                }} href="#edit" className={`profileNavLink ${activeSection == 'edit' ? 'active' : ''}`}>
+                                    <span className="profileNavIcon"><FaEdit /></span>
+                                    Edit profile
+                                </a>
+                                <a onClick={(e) => {
                                     handleActiveSection(e, 'orders')
-                                }} href="#orders" className="profileNavLink">
+                                }} href="#orders" className={`profileNavLink ${activeSection == 'orders' ? 'active' : ''}`}>
                                     <span className="profileNavIcon"><FaShoppingBag /></span>
                                     My Orders
-                                    <em className="profileNavCount">24</em>
+                                    <em className="profileNavCount">{cartItems.length}</em>
                                 </a>
                                 <a onClick={(e) => {
                                     handleActiveSection(e, 'wishlist')
-                                }} href="#wishlist" className="profileNavLink">
+                                }} href="#wishlist" className={`profileNavLink ${activeSection == 'wishlist' ? 'active' : ''}`}>
                                     <span className="profileNavIcon"><FaHeart /></span>
                                     Wishlist
-                                    <em className="profileNavCount">18</em>
-                                </a>
-                                <a onClick={(e) => {
-                                    handleActiveSection(e, 'addresses')
-                                }} href="#addresses" className="profileNavLink">
-                                    <span className="profileNavIcon"><FaMapMarkerAlt /></span>
-                                    Addresses
-                                </a>
-                                <a onClick={(e) => {
-                                    handleActiveSection(e, 'payment')
-                                }} href="#payment" className="profileNavLink">
-                                    <span className="profileNavIcon"><FaCreditCard /></span>
-                                    Payment methods
+                                    <em className="profileNavCount"> {wishlistContext.length} </em>
                                 </a>
 
                                 <p className="profileNavTitle">Settings</p>
@@ -145,10 +143,6 @@ function Profile() {
                                     <span className="profileNavIcon"><FaCog /></span>
                                     Account settings
                                 </a>
-                                <a href="#support" className="profileNavLink">
-                                    <span className="profileNavIcon"><FaHeadset /></span>
-                                    Support
-                                </a>
                                 <a href="#logout" className="profileNavLink logout">
                                     <span className="profileNavIcon"><FaSignOutAlt /></span>
                                     Log out
@@ -157,11 +151,12 @@ function Profile() {
                         </aside>
                         {/* ------------------------------------------------------------------------------------------------- */}
                         <div className="profileContent">
+                            {/* <ProfileOverview /> */}
                             {activeSection === "overview" && <ProfileOverview />}
+                            {activeSection === "edit" && <ProfileEdit />}
                             {activeSection === "orders" && <Orders />}
                             {activeSection === "wishlist" && <WishList />}
                             {activeSection === "addresses" && <Addresses />}
-                            {activeSection === "payment" && <PaymentMethods />}
                             {activeSection === "settings" && <AccountSettings />}
                         </div>
                     </div>

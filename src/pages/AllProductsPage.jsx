@@ -15,6 +15,7 @@ import image4 from '../assets/img/bannar4_Products_Page.png'
 import { Autoplay, EffectFade, Navigation, Pagination } from 'swiper/modules';
 import { useEffect, useState } from 'react';
 import ProductCard from '../components/Products/components/ProductCard';
+import PageTransition from '../components/PageTransition';
 
 function AllProductsPage() {
     const [categoryList, setCategoryList] = useState([])
@@ -44,7 +45,7 @@ function AllProductsPage() {
 
     // console.log(categoryList)
     return (
-        <>
+        <PageTransition>
             <div className="allProductsPage">
                 <div className="container">
                     <div className="topContainer heroBanner">
@@ -109,7 +110,7 @@ function AllProductsPage() {
                     </div>
                 </div>
             </div>
-        </>
+        </PageTransition>
     )
 }
 

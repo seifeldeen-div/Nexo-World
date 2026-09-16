@@ -321,6 +321,7 @@
 }
 
 .profileNavLink:hover {
+    cursor: pointer;
     background: rgba(0, 144, 240, 0.08);
     color: #0090f0;
     transform: translateX(3px);
