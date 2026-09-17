@@ -45,9 +45,7 @@ export const handleLogOut = (navigate) => {
                     htmlContainer: "logout-text"
                 }
             }).then(() => {
-                setTimeout(() => {
                     navigate('/login')
-                }, 200)
             })
         }
     })
