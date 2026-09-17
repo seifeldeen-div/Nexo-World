@@ -292,7 +292,10 @@
 }
 
 .registerInputWrap input {
-    text-transform: capitalize;
+    &:first-child {
+        text-transform: capitalize;
+    }
+
     width: 100%;
     padding: 14px 52px 14px 46px;
     border: 1px solid var(--border-color, #d6d6d6d5);
@@ -301,7 +304,9 @@
     font-family: var(--Inter-font-family, "Inter", sans-serif);
     font-size: 14px;
     color: var(--color-heading, #253237);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    transition: border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
 .registerInputWrap input::placeholder {
@@ -542,6 +547,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .registerPage *,
     .registerPage *::before,
     .registerPage *::after {

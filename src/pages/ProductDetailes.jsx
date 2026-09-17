@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { BsCartCheck } from "react-icons/bs";
 
 import './Style/ProductDetailes.css'
@@ -31,8 +31,25 @@ function ProductDetailes() {
     const [productsCategory, setProductsCategoty] = useState([])
     const { cartItems, addToCart } = useContext(CartContext)
     const { wishlistContext, addToWish } = useContext(wishContext)
+    const navigate = useNavigate()
     const isInCart = product ? cartItems.some((item) => item.id === product.id) : false
     const isInWishlist = product ? wishlistContext.some((item) => item.id === product.id) : false
+
+    const requireLogin = () => {
+        let currentUser = null
+        try {
+            currentUser = JSON.parse(localStorage.getItem("currentUser"))
+        } catch {
+            currentUser = null
+        }
+
+        if (!currentUser?.email) {
+            toast.error("Must Login First")
+            navigate('/login')
+            return false
+        }
+        return true
+    }
 
     useEffect(() => {
         fetch(`https://dummyjson.com/products/${productID}`)
@@ -52,6 +69,7 @@ function ProductDetailes() {
 
     const handleAddWish = () => {
         if (isInWishlist || !product) return
+        if (!requireLogin()) return
 
         addToWish(product)
         setHeartBurst(HEART_BURST)
@@ -136,6 +154,7 @@ function ProductDetailes() {
                                             toast("Already added to cart", { icon: "✓" })
                                             return
                                         }
+                                        if (!requireLogin()) return
                                         addToCart(product)
                                         toast.success(
                                             <div className="toast-wrapper">

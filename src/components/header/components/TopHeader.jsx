@@ -1,40 +1,52 @@
 import { Link } from "react-router-dom"
 import Logo from '../../../assets/img/logo.png'
+import LogoMark from '../../../assets/img/icon.png'
 import { FaRegHeart, FaSearch } from "react-icons/fa";
-import { CiHeart } from "react-icons/ci";
 import { LuShoppingCart } from "react-icons/lu";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import SearchBox from "../../SearchBox";
 import { wishContext } from "../../context/WishlistContext";
 
-function TopHeader() {
-
+function TopHeader({ collapsed, onExpand }) {
 
     const { cartItems } = useContext(CartContext)
-    const {wishlistContext} = useContext(wishContext)
+    const { wishlistContext } = useContext(wishContext)
 
     return (
-        <div className="topHeader">
-            <div className="container">
-                <div className="headerLogoContainer">
-                    <Link className="headerLogo" to={'./'}><img src={Logo} alt="Logo" /></Link>
+        <div className="sidebarTop">
+            <Link className="sidebarLogo" to="/" aria-label="Nexo home">
+                <img className="primary" src={Logo} alt="Nexo logo" />
+                <img className="mark" src={LogoMark} alt="Nexo" />
+            </Link>
+
+            {collapsed ? (
+                <button
+                    className="sidebarSearchBtn"
+                    type="button"
+                    title="Search"
+                    aria-label="Search"
+                    onClick={onExpand}
+                >
+                    <FaSearch />
+                </button>
+            ) : (
+                <div className="sidebarSearch">
+                    <SearchBox />
                 </div>
-                <SearchBox />
-                <div className="headerIcons">
-                    <div className="icon wishList">
-                        <Link to='/wishlist'>
-                            <FaRegHeart />
-                            <span className="count">{wishlistContext.length}</span>
-                        </Link>
-                    </div>
-                    <div className="icon cart">
-                        <Link to="/cart">
-                            <LuShoppingCart />
-                            <span className="count">{cartItems.length}</span>
-                        </Link>
-                    </div>
-                </div>
+            )}
+
+            <div className="sidebarIcons">
+                <Link className="sidebarIcon" to="/wishlist" title="Wishlist" data-label="Wishlist">
+                    <span className="iconWrap"><FaRegHeart /></span>
+                    <span className="label">Wishlist</span>
+                    <span className="count">{wishlistContext.length}</span>
+                </Link>
+                <Link className="sidebarIcon" to="/cart" title="Cart" data-label="Cart">
+                    <span className="iconWrap"><LuShoppingCart /></span>
+                    <span className="label">Cart</span>
+                    <span className="count">{cartItems.length}</span>
+                </Link>
             </div>
         </div>
     )

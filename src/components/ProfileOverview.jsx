@@ -29,23 +29,23 @@ export default function ProfileOverview() {
                 <div className="profileInfoGrid">
                     <div className="profileInfoItem">
                         <span>Full name</span>
-                        <strong> {Data.username} </strong>
+                        <strong> {Data.username || 'Not Assigned'} </strong>
                     </div>
                     <div className="profileInfoItem">
                         <span>Email address</span>
-                        <strong> {Data.email} </strong>
+                        <strong> {Data.email || 'Not Assigned'} </strong>
                     </div>
                     <div className="profileInfoItem">
                         <span>Phone number</span>
-                        <strong>Not Assigned</strong>
+                        <strong> {Data.phone || 'Not Assigned'} </strong>
                     </div>
                     <div className="profileInfoItem">
                         <span>Country</span>
-                        <strong>Not Assigned</strong>
+                        <strong>{Data.country || 'Not Assigned'}</strong>
                     </div>
                     <div className="profileInfoItem">
                         <span>City</span>
-                        <strong>Not Assigned</strong>
+                        <strong>{Data.city || 'Not Assigned'}</strong>
                     </div>
                     <div className="profileInfoItem">
                         <span>Role</span>
@@ -53,11 +53,7 @@ export default function ProfileOverview() {
                     </div>
                 </div>
             </div>
-
-
-            
-
-            <div id="addresses" className="profileCard profileAddressesCard">
+            {/* <div id="addresses" className="profileCard profileAddressesCard">
                 <span className="profileCardLabel">Saved places</span>
                 <h2>Shipping <em>addresses</em></h2>
 
@@ -82,7 +78,7 @@ export default function ProfileOverview() {
                 <button type="button" className="profileOutlineBtn profileAddAddress">
                     <FaMapMarkerAlt /> Add new address
                 </button>
-            </div>
+            </div> */}
         </PageTransition>
     )
 }

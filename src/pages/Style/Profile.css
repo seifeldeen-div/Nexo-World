@@ -15,7 +15,7 @@
 .profilePage .container {
     position: relative;
     z-index: 2;
-    width: min(1320px, calc(100vw - 48px));
+    /* width: min(1320px, calc(100vw - 48px)); */
     margin: 0 auto;
 }
 
@@ -437,7 +437,7 @@
 
 .profileCard h2 em {
     font-style: normal;
-    background: linear-gradient(120deg, var(--main-color, #0090f0), #5ec1ff);
+    background: linear-gradient(120deg, var(--main-color, #f00000), #ff0e0e);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -454,6 +454,7 @@
 }
 
 .profileCardHead h2 {
+    color: #0090f0;
     margin-bottom: 0;
 }
 
@@ -696,6 +697,393 @@
     font-weight: 800;
 }
 
+/* ---------- wishlist ---------- */
+
+.profileWishCard .profileWishCount {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(255, 45, 85, 0.14), rgba(255, 122, 77, 0.12));
+    color: #ff2d55;
+    font-family: var(--Inter-font-family, "Inter", sans-serif);
+    font-size: 12px;
+    font-weight: 800;
+    vertical-align: middle;
+    margin-left: 6px;
+    text-transform: none;
+}
+
+.profileWishActions {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.profileWishActions .profileLinkBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.profileWishActions .profileLinkBtn:nth-child(1) {
+    background: rgba(255, 45, 85, 0.08);
+    border-color: rgba(255, 45, 85, 0.22);
+    color: #ff2d55;
+}
+
+.profileWishActions .profileLinkBtn:nth-child(1):hover:not(:disabled) {
+    background: linear-gradient(135deg, #ff2d55, #ff5d7e);
+    border-color: transparent;
+    color: #fff;
+}
+
+.profileWishOrders {
+    margin-top: 22px;
+}
+
+.profileWishRow {
+    position: relative;
+    grid-template-columns: 60px minmax(0, 1.4fr) auto auto auto;
+    overflow: visible;
+}
+
+.profileWishRow:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255, 45, 85, 0.35);
+    box-shadow: 0 16px 34px rgba(255, 45, 85, 0.1);
+}
+
+.profileWishRow .profileOrderMain p {
+    max-width: 520px;
+}
+
+.profileWishIcon {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    overflow: visible;
+    background: linear-gradient(135deg, rgba(255, 45, 85, 0.12), rgba(255, 122, 77, 0.1));
+    border: 1px solid rgba(255, 45, 85, 0.16);
+    padding: 0;
+}
+
+.profileWishIcon::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 45, 85, 0.14);
+}
+
+.profileWishIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.profileWishRow:hover .profileWishIcon img {
+    transform: scale(1.1);
+}
+
+.profileWishHeartBadge {
+    position: absolute;
+    right: -7px;
+    bottom: -7px;
+    z-index: 2;
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff2d55, #ff5d7e);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    box-shadow: 0 4px 10px rgba(255, 45, 85, 0.4);
+    animation: profileWishBadgeBeat 2.2s ease-in-out infinite;
+}
+
+.profileWishTitleLink {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.profileWishTitleLink strong {
+    display: block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.profileWishTitleLink:hover strong {
+    color: #ff2d55;
+}
+
+.profileWishStatusTag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, rgba(255, 45, 85, 0.12), rgba(255, 122, 77, 0.1));
+    color: #ff2d55;
+    font-size: 12px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.profileWishStatusTag svg {
+    font-size: 13px;
+    color: #ff2d55;
+    animation: wishTagBeat 1.6s ease-in-out infinite;
+    transform-origin: center;
+}
+
+.profileWishTotal strong {
+    color: #ff2d55;
+}
+
+.profileWishRowActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profileWishCartBtn,
+.profileWishRemoveBtn {
+    width: 40px;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    border: 1px solid rgba(37, 50, 55, 0.12);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.profileWishCartBtn {
+    background: rgba(0, 144, 240, 0.08);
+    color: #0090f0;
+    border-color: rgba(0, 144, 240, 0.2);
+}
+
+.profileWishCartBtn:hover,
+.profileWishCartBtn:focus-visible {
+    background: linear-gradient(135deg, #0090f0, #38a9f5);
+    border-color: transparent;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 144, 240, 0.3);
+}
+
+.profileWishRemoveBtn {
+    background: rgba(255, 45, 85, 0.08);
+    color: #ff5860;
+    border-color: rgba(255, 45, 85, 0.2);
+}
+
+.profileWishRemoveBtn:hover,
+.profileWishRemoveBtn:focus-visible {
+    background: linear-gradient(135deg, #ff2d55, #ff5d7e);
+    border-color: transparent;
+    color: #fff;
+    transform: translateY(-2px) rotate(4deg);
+    box-shadow: 0 10px 24px rgba(255, 45, 85, 0.3);
+}
+
+.profileWishRemoveBtn:active,
+.profileWishCartBtn:active {
+    transform: scale(0.92);
+}
+
+.profileWishRow.removing {
+    pointer-events: none;
+}
+
+.profileWishHeartBurst {
+    position: absolute;
+    right: 44px;
+    bottom: 24%;
+    width: 0;
+    height: 0;
+    z-index: 60;
+    pointer-events: none;
+}
+
+.profileWishHeartBurst svg {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    top: 0;
+    color: #ff2d55;
+    opacity: 0;
+    filter: drop-shadow(0 4px 10px rgba(255, 45, 85, 0.45));
+    animation: profileWishHeartFly 1.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: var(--d, 0s);
+}
+
+@keyframes profileWishHeartFly {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.35) rotate(0deg);
+    }
+
+    16% {
+        opacity: 1;
+        transform: translate(0, calc(var(--dy) * -0.12)) scale(0.95) rotate(calc(var(--r) * 0.2));
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(var(--dx), var(--dy)) scale(1.08) rotate(var(--r));
+    }
+}
+
+@keyframes profileWishBadgeBeat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    12% {
+        transform: scale(1.3);
+    }
+
+    24% {
+        transform: scale(1);
+    }
+
+    36% {
+        transform: scale(1.15);
+    }
+}
+
+.profileWishEmpty {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 300px;
+    margin-top: 22px;
+    padding: 36px 24px;
+    text-align: center;
+    border: 1px dashed rgba(255, 45, 85, 0.25);
+    border-radius: 18px;
+    background: rgba(247, 251, 254, 0.7);
+}
+
+.profileWishEmptyIcon {
+    width: 78px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255, 45, 85, 0.14), rgba(255, 122, 77, 0.12));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: emptyHeartPulse 2s ease-in-out infinite;
+}
+
+.profileWishEmptyIcon svg {
+    font-size: 34px;
+    color: #ff2d55;
+    animation: wishTagBeat 1.6s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes wishTagBeat {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    12% {
+        transform: scale(1.28);
+    }
+
+    24% {
+        transform: scale(1);
+    }
+
+    36% {
+        transform: scale(1.18);
+    }
+}
+
+@keyframes emptyHeartPulse {
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 45, 85, 0.22);
+    }
+
+    50% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 18px rgba(255, 45, 85, 0);
+    }
+}
+
+.profileWishEmpty h3 {
+    margin: 6px 0 0;
+    color: #1f3d4d;
+    font-family: var(--DM-font-family, "DM Sans", sans-serif);
+    font-size: 22px;
+}
+
+.profileWishEmpty p {
+    margin: 0;
+    color: #43576a;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 400px;
+}
+
+.profileWishBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 6px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ff2d55, #ff5d7e);
+    color: #fff;
+    font-family: var(--Inter-font-family, "Inter", sans-serif);
+    font-size: 14px;
+    font-weight: 800;
+    box-shadow: 0 12px 28px rgba(255, 45, 85, 0.3);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.3s ease;
+}
+
+.profileWishBtn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.05);
+    box-shadow: 0 16px 36px rgba(255, 45, 85, 0.38);
+}
+
 /* ---------- addresses ---------- */
 
 .profileAddresses {
@@ -845,6 +1233,34 @@
         align-self: center;
         justify-self: end;
     }
+
+    .profileWishRow {
+        grid-template-columns: 60px minmax(0, 1fr) auto;
+    }
+
+    .profileWishRow .profileWishIcon {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .profileWishRow .profileOrderMain {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .profileWishRow .profileWishRowActions {
+        grid-column: 3;
+        grid-row: 1;
+        align-self: center;
+        justify-self: end;
+    }
+
+    .profileWishRow .profileWishTotal {
+        grid-column: 2;
+        grid-row: auto;
+        align-self: start;
+        justify-self: start;
+    }
 }
 
 @media (max-width: 992px) {
@@ -872,7 +1288,7 @@
 
     .profileNavLink {
         flex: 1 1 160px;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .profileNavCount {
@@ -883,6 +1299,11 @@
 @media (max-width: 768px) {
     .profilePage .container {
         width: min(100%, calc(100vw - 24px));
+    }
+
+    .profileWishCard .profileCardHead {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .profileHeader {
@@ -958,6 +1379,119 @@
         padding: 24px 20px;
         border-radius: 18px;
     }
+
+    .profileWishActions {
+        width: 100%;
+    }
+
+    .profileWishActions .profileLinkBtn {
+        flex: 1;
+        justify-content: center;
+    }
+
+    .profileWishRow {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .profileWishRow .profileWishIcon,
+    .profileWishRow .profileOrderMain,
+    .profileWishRow .profileOrderStatus,
+    .profileWishRow .profileWishTotal,
+    .profileWishRow .profileWishRowActions {
+        grid-column: 1;
+    }
+
+    .profileWishRow .profileOrderMain {
+        grid-row: auto;
+    }
+
+    .profileWishRow .profileWishRowActions {
+        justify-self: start;
+    }
+
+    .profileWishHeartBurst {
+        right: auto;
+        left: 50%;
+        bottom: 34%;
+        transform: translateX(-50%);
+    }
+}
+
+/* ---------- sweet alerts ---------- */
+
+.nexoSwalBackdrop {
+    background: rgba(13, 40, 60, 0.38) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.nexoSwalPop {
+    padding: 34px 38px 40px;
+    border-radius: 22px;
+    border: 1px solid rgba(0, 144, 240, 0.14);
+    background: linear-gradient(165deg, #ffffff 0%, #f0faff 100%);
+    box-shadow: 0 30px 80px rgba(0, 90, 160, 0.32);
+    font-family: var(--Inter-font-family, "Inter", sans-serif);
+    color: #1f3d4d;
+}
+
+.nexoSwalPop.swal2-loading {
+    padding-bottom: 42px;
+}
+
+.nexoSwalPop .swal2-loader {
+    border-color: #0090f0 transparent #0090f0 transparent;
+}
+
+.nexoSwalTitle {
+    color: #1f3d4d !important;
+    font-family: var(--DM-font-family, "DM Sans", sans-serif);
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+.nexoSwalHtml {
+    color: #43576a !important;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.nexoSwalPop .swal2-timer-progress-bar {
+    background: linear-gradient(135deg, #0090f0, #38a9f5);
+    height: 4px;
+}
+
+.nexoSwalPop .swal2-success-ring {
+    border-color: rgba(39, 174, 96, 0.3);
+}
+
+.nexoSwalPop .swal2-success [class^="swal2-success-line"] {
+    background-color: #27ae60;
+}
+
+.nexoSwalConfirm {
+    padding: 12px 32px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #0090f0, #38a9f5) !important;
+    box-shadow: 0 12px 28px rgba(0, 144, 240, 0.3);
+    font-family: var(--Inter-font-family, "Inter", sans-serif);
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.nexoSwalConfirm:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.03);
+    box-shadow: 0 16px 36px rgba(0, 144, 240, 0.4);
+}
+
+.nexoSwalConfirm:focus-visible {
+    box-shadow: 0 0 0 4px rgba(0, 144, 240, 0.25);
+    outline: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

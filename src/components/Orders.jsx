@@ -1,3 +1,4 @@
+import { useContext } from "react"
 import PageTransition from "./PageTransition"
 import {
     FaUserAlt,
@@ -16,40 +17,53 @@ import {
     FaRegCopy,
     FaChevronRight
 } from "react-icons/fa"
+import { CartContext } from "./context/CartContext"
+import { useNavigate } from "react-router-dom"
 
 function Orders() {
+
+    const { cartItems } = useContext(CartContext)
+    const navigate = useNavigate()
+
+
     return (
         <PageTransition>
             <div id="orders" className="profileCard">
                 <div className="profileCardHead">
                     <div>
-                        <span className="profileCardLabel">Order history</span>
+                        <span className="profileCardLabel">Order statue</span>
                         <h2>Recent <em>orders</em></h2>
                     </div>
-                    <button type="button" className="profileLinkBtn">View all <FaChevronRight /></button>
+                    <button onClick={()=> {
+                        navigate("/cart")
+                    }} type="button" className="profileLinkBtn">View all <FaChevronRight /></button>
                 </div>
 
                 <div className="profileOrders">
-                    <div className="profileOrderItem delivered">
-                        <div className="profileOrderIcon"><FaBoxOpen /></div>
-                        <div className="profileOrderMain">
-                            <strong>#NEX-102847</strong>
-                            <p>Wireless Headphones · Smart Watch · Charger</p>
+                    {cartItems.map((item) => {
+                        return <div className="profileOrderItem delivered">
+                            <div className="profileOrderIcon">
+                                <img src={item.images[0]} alt={item.title} />
+                            </div>
+                            <div className="profileOrderMain">
+                                <strong>{item.title}</strong>
+                                <p> {`${item.description.slice(0,55)}.....`} </p>
+                            </div>
+                            {/* <div className="profileOrderDate">
+                                <span>Placed on</span>
+                                <strong>Sep 12, 2026</strong>
+                            </div> */}
+                            <div className="profileOrderStatus">
+                                <span className="profileOrderStatusTag shipping"><FaTruck /> Shipping</span>
+                            </div>
+                            <div className="profileOrderTotal">
+                                <span>Total</span>
+                                <strong>$ {item.price}</strong>
+                            </div>
                         </div>
-                        <div className="profileOrderDate">
-                            <span>Placed on</span>
-                            <strong>Sep 12, 2026</strong>
-                        </div>
-                        <div className="profileOrderStatus">
-                            <span className="profileOrderStatusTag"><FaCheckCircle /> Delivered</span>
-                        </div>
-                        <div className="profileOrderTotal">
-                            <span>Total</span>
-                            <strong>$348.90</strong>
-                        </div>
-                    </div>
+                    })}
 
-                    <div className="profileOrderItem">
+                    {/* <div className="profileOrderItem">
                         <div className="profileOrderIcon"><FaBoxOpen /></div>
                         <div className="profileOrderMain">
                             <strong>#NEX-102803</strong>
@@ -85,7 +99,7 @@ function Orders() {
                             <span>Total</span>
                             <strong>$89.70</strong>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </PageTransition>

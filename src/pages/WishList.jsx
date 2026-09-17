@@ -41,6 +41,7 @@ function WishList() {
     return (
         <PageTransition>
             <section className="wishlistPage">
+                
                 <div className="wishBgHearts" aria-hidden="true">
                     {floatHearts.map((h, i) => (
                         <FaHeart

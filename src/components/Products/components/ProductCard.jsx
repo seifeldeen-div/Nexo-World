@@ -1,6 +1,6 @@
 import { TiStarFullOutline } from "react-icons/ti";
 import { FaShare, FaHeart, FaCartArrowDown, FaCheckCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import '../Products.css'
@@ -23,6 +23,7 @@ function ProductCard(props) {
     const { cartItems, addToCart } = useContext(CartContext)
     const { wishlistContext, addToWish } = useContext(wishContext)
     const [heartBurst, setHeartBurst] = useState(null)
+    const navigate = useNavigate()
 
     const isInCart = cartItems.some((i => i.id === props.item.id))
     const isInWishlist = wishlistContext.some((i => i.id === props.item.id))
@@ -113,32 +114,52 @@ function ProductCard(props) {
                 <div className="icons">
                     <Link onClick={(event) => {
                         event.preventDefault()
-                        addToCart(props.item)
-                        toast.success(
-                            <div className="toast-wrapper">
-                                <div className="image">
-                                    <img src={props.item.images[0]} alt={props.item.title} />
+                        if (localStorage.getItem("loginBtnStatue") === 'true') {
+                            addToCart(props.item)
+                            toast.success(
+                                <div className="toast-wrapper">
+                                    <div className="image">
+                                        <img src={props.item.images[0]} alt={props.item.title} />
+                                    </div>
+                                    <div className="content">
+                                        <strong>{props.item.title}</strong>
+                                        <p>Added To Cart</p>
+                                    </div>
+                                    <div className="btn">
+                                        <Link to='/cart'>View Cart</Link>
+                                    </div>
                                 </div>
-                                <div className="content">
-                                    <strong>{props.item.title}</strong>
-                                    <p>Added To Cart</p>
-                                </div>
-                                <div className="btn">
-                                    <Link to='/cart'>View Cart</Link>
-                                </div>
-                            </div>
-                            , { duration: 3000 }
-                        )
+                                , { duration: 3000 }
+                            )
+                        } else {
+                            toast.error("Must Login Frist")
+                            navigate('/login')
+                        }
                     }} to={'./'} aria-label="Add to cart"><FaCartArrowDown /></Link>
                     <Link
-                        onClick={handleAddWish}
+                        onClick={(event) => {
+                            if (localStorage.getItem("loginBtnStatue") === 'true') {
+                                handleAddWish(event)
+                            } else {
+                                toast.error("Must Login Frist")
+                                navigate('/login')
+                            }
+                        }}
                         className={isInWishlist ? 'wish-active' : ''}
                         aria-disabled={isInWishlist}
                         aria-label={isInWishlist ? "In wishlist" : "Add to wishlist"}
                         to={'./'}>
                         <FaHeart />
                     </Link>
-                    <Link to={'./'} aria-label="Share product"><FaShare /></Link>
+                    <Link onClick={(e) => {
+                        e.preventDefault()
+                        toast(
+                            "Under Developing",
+                            {
+                                duration: 1500,
+                            },
+                        );
+                    }} to={'./'} aria-label="Share product"><FaShare /></Link>
                 </div>
                 <button className="btn">Buy Now</button>
             </div>

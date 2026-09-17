@@ -25,15 +25,33 @@ import { Link, useNavigate } from "react-router-dom"
 import WishList from "./WishList"
 import Orders from "../components/Orders"
 import ProfileEdit from "../components/ProfileEdit"
+import { handleLogOut } from "../components/header/components/BottomHeader"
+import ProfileWishList from "../components/ProfileWishList"
+import toast from "react-hot-toast"
 
-const userData = JSON.parse(localStorage.getItem("registerData"))
-const keys = Object.keys(userData)
 export const Data = {
-    'username': userData[keys[0]],
-    'email': userData[keys[1]],
+    'username': '',
+    'password': '',
+    'email': '',
+    'phone': '',
+    'zip': '',
+    'country': '',
+    'city': '',
 }
 
 function Profile() {
+    const currentUserEmail = JSON.parse(localStorage.getItem("currentUser"))?.email || ''
+    const usersData = JSON.parse(localStorage.getItem("usersData")) || {}
+    const userData = usersData[currentUserEmail] || {}
+
+    Data.username = userData.username || ''
+    Data.password = userData.password || ''
+    Data.email = userData.email || ''
+    Data.phone = userData.phone || ''
+    Data.zip = userData.zip || ''
+    Data.country = userData.country || ''
+    Data.city = userData.city || ''
+
     const [activeSection, setActiveSection] = useState('overview')
     const { wishlistContext } = useContext(wishContext)
     const { cartItems } = useContext(CartContext)
@@ -44,29 +62,30 @@ function Profile() {
         setActiveSection(activeSec)
     }
 
+    if (localStorage.getItem("loginBtnStatue") == 'false')
+        return navigate("/")
 
     return (
         <PageTransition>
             <section className="profilePage">
                 <div className="profileGlow" aria-hidden="true" />
-
                 <div className="container">
                     <div className="profileHeader">
                         <div className="profileUser">
-                            <div className="profileAvatar"> {Data.username[0]} </div>
+                            <div className="profileAvatar"> {Data.username[0] || 'undefiend'} </div>
                             <div className="profileUserInfo">
-                                <h1>{Data.username} <em>welcome back</em></h1>
-                                <p>{Data.email} <span>·</span> Member </p>
+                                <h1>{Data.username || 'undefiend'} <em>welcome back</em></h1>
+                                <p>{Data.email || 'undefiend'} <span>·</span> Member </p>
                             </div>
                         </div>
 
                         <div className="profileHeaderActions">
-                            <button onClick={()=> {
+                            <button onClick={() => {
                                 setActiveSection('edit')
                             }} type="button" className="profileOutlineBtn">
                                 <FaEdit /> Edit profile
                             </button>
-                            <button onClick={()=> {
+                            <button onClick={() => {
                                 navigate("/allproducts")
                             }} type="button" className="profileSolidBtn">
                                 <FaShoppingBag /> New order
@@ -143,7 +162,14 @@ function Profile() {
                                     <span className="profileNavIcon"><FaCog /></span>
                                     Account settings
                                 </a>
-                                <a href="#logout" className="profileNavLink logout">
+                                <a onClick={(e) => {
+                                    e.preventDefault()
+                                    if (localStorage.getItem("loginBtnStatue") == 'true')
+                                        handleLogOut()
+                                    else {
+                                        toast.error("Login First")
+                                    }
+                                }} href="#logout" className="profileNavLink logout">
                                     <span className="profileNavIcon"><FaSignOutAlt /></span>
                                     Log out
                                 </a>
@@ -155,7 +181,7 @@ function Profile() {
                             {activeSection === "overview" && <ProfileOverview />}
                             {activeSection === "edit" && <ProfileEdit />}
                             {activeSection === "orders" && <Orders />}
-                            {activeSection === "wishlist" && <WishList />}
+                            {activeSection === "wishlist" && <ProfileWishList />}
                             {activeSection === "addresses" && <Addresses />}
                             {activeSection === "settings" && <AccountSettings />}
                         </div>

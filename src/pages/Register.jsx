@@ -6,6 +6,7 @@ import './Style/Register.css'
 import { useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
 
+
 function Register() {
 
     const [showPassword, setShowPassword] = useState(false)
@@ -15,15 +16,26 @@ function Register() {
     const [email, setEmail] = useState("")
 
     const registerData = {
-        'username': username,
-        'email': email,
-        'password': password
+        'username': username || '',
+        'email': email || '',
+        'password': password || '',
+        'phone': JSON.parse(localStorage.getItem("newUserData"))?.phone || '',
+        'zip': JSON.parse(localStorage.getItem("registerData"))?.zip || '',
+        'country': JSON.parse(localStorage.getItem("registerData"))?.country || '',
+        'city': JSON.parse(localStorage.getItem("registerData"))?.city || ''
     }
 
+
     const navigate = useNavigate()
-    const handleSubmit = (e) => {
+    const handleSubmit = (e, registerData) => {
         e.preventDefault()
         navigate('/login')
+
+        const usersData = JSON.parse(localStorage.getItem("usersData")) || {}
+        usersData[registerData.email] = {
+            ...registerData
+        }
+        localStorage.setItem("usersData", JSON.stringify(usersData))
     }
 
     return (
@@ -87,8 +99,7 @@ function Register() {
 
                             <form action='login' method="POST" onSubmit={(e) => {
                                 toast.success('Successfully Registered')
-                                handleSubmit(e)
-                                localStorage.setItem("registerData", JSON.stringify(registerData))
+                                handleSubmit(e, registerData)
                             }} className="registerForm">
                                 <div className="registerField">
                                     <label htmlFor="registerName">Full Name</label>

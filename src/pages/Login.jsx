@@ -9,7 +9,8 @@ import toast from "react-hot-toast"
 function Login() {
 
     const [showPassword, setShowPassword] = useState(false)
-    const userLoginData = JSON.parse(localStorage.getItem("registerData"))
+    const userLoginData = JSON.parse(localStorage.getItem("usersData"))
+    // console.log(userLoginData)
     // Object.keys(userLoginData).forEach((key)=> console.log(key, userLoginData[key]))
 
     const [mail, setMail] = useState()
@@ -24,19 +25,26 @@ function Login() {
             return
         }
 
-        if (userLoginData.email !== mail) {
+        if (userLoginData[mail].email !== mail) {
             toast.error("Email is incorrect")
             return
         }
 
-        if (userLoginData.password !== password) {
+        if (userLoginData[mail].password !== password) {
             toast.error("Password is incorrect")
             return
         }
 
+        const user = userLoginData[mail]
+
         navigate("/")
         toast.success("Successful LogedIn")
         localStorage.setItem('loginBtnStatue', 'true')
+        localStorage.setItem("currentUser", JSON.stringify({
+            username: user.username,
+            email: user.email
+        }))
+        window.dispatchEvent(new Event("nexoUserChange"))
     }
 
     return (
