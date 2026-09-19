@@ -5,6 +5,7 @@ import Logo from "../assets/img/logo.png"
 import './Style/Login.css'
 import { useState } from "react"
 import toast from "react-hot-toast"
+import { handleFastLoginBtn } from "./Register"
 
 function Login() {
 
@@ -161,9 +162,9 @@ function Login() {
                                 </div>
 
                                 <div className="loginSocials">
-                                    <button type="button" className="loginSocial google"><FaGoogle /> Google</button>
-                                    <button type="button" className="loginSocial apple"><FaApple /> Apple</button>
-                                    <button type="button" className="loginSocial facebook"><FaFacebookF /> Facebook</button>
+                                    <button onClick={handleFastLoginBtn} type="button" className="loginSocial google"><FaGoogle /> Google</button>
+                                    <button onClick={handleFastLoginBtn} type="button" className="loginSocial apple"><FaApple /> Apple</button>
+                                    <button onClick={handleFastLoginBtn} type="button" className="loginSocial facebook"><FaFacebookF /> Facebook</button>
                                 </div>
                             </form>
 

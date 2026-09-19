@@ -7,32 +7,32 @@ import { useState } from "react"
 import toast, { Toaster } from "react-hot-toast"
 
 
+export const handleFastLoginBtn = () => {
+    toast(
+        <div className="developing-toast">
+            <div className="developing-icon">
+                <span>⚙</span>
+            </div>
+
+            <div className="developing-content">
+                <span className="developing-title">UNDER DEVELOPING</span>
+                <span className="developing-text">
+                    This feature is coming soon
+                </span>
+            </div>
+        </div>,
+        {
+            duration: 1800,
+            style: {
+                padding: "0",
+                background: "transparent",
+                boxShadow: "none",
+            },
+        }
+    );
+}
+
 function Register() {
-
-    const handleFastLoginBtn = () => {
-        toast(
-            <div className="developing-toast">
-                <div className="developing-icon">
-                    <span>⚙</span>
-                </div>
-
-                <div className="developing-content">
-                    <span className="developing-title">UNDER DEVELOPING</span>
-                    <span className="developing-text">
-                        This feature is coming soon
-                    </span>
-                </div>
-            </div>,
-            {
-                duration: 1800,
-                style: {
-                    padding: "0",
-                    background: "transparent",
-                    boxShadow: "none",
-                },
-            }
-        );
-    }
 
     const [showPassword, setShowPassword] = useState(false)
 
