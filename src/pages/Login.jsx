@@ -10,8 +10,6 @@ function Login() {
 
     const [showPassword, setShowPassword] = useState(false)
     const userLoginData = JSON.parse(localStorage.getItem("usersData"))
-    // console.log(userLoginData)
-    // Object.keys(userLoginData).forEach((key)=> console.log(key, userLoginData[key]))
 
     const [mail, setMail] = useState()
     const [password, setPassword] = useState()

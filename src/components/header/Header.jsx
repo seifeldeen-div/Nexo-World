@@ -65,12 +65,18 @@ function Header({ collapsed, onToggleCollapsed }) {
                 </Link>
             </div>
 
+            {isMobileOpen && (
+                <div
+                    className="sidebarOverlay"
+                    onClick={() => setIsMobileOpen(false)}
+                />
+            )}
+
             <aside
                 className={`sidebar ${effectiveCollapsed ? 'isCollapsed' : ''} ${isMobileOpen ? 'isMobileOpen' : ''}`}
                 onMouseOver={handleTooltip}
                 onMouseLeave={() => setTooltip(null)}
             >
-                <div className="sidebarOverlay" onClick={() => setIsMobileOpen(false)} aria-hidden="true" />
 
                 <div className="sidebarInner">
                     <button
