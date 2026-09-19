@@ -18,7 +18,7 @@
 
 **Nexo Store** is a modern e-commerce web application designed to give customers a smooth, fast and enjoyable shopping experience. It focuses on clean design, responsive layouts and simple navigation, so users can browse and find products easily on any device.
 
-### ✨ Features
+###  Features
 
 -  Clean and intuitive product browsing
 -  Fully responsive design (mobile, tablet, desktop)
@@ -37,7 +37,7 @@
 | Hosting    | Vercel                |
 | Versioning | Git & GitHub          |
 
-### 📂 Project Structure
+###  Project Structure
 
 ```
 nexo-store/
@@ -53,7 +53,7 @@ The project is deployed on **Vercel**. Every push to the main branch can trigger
 
 🔗 **Live:** [https://nexo-world-eight.vercel.app/](https://nexo-world-eight.vercel.app/)
 
-### 🤝 Contributing
+###  Contributing
 
 Contributions, issues and feature requests are welcome!
 
