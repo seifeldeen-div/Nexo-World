@@ -3,8 +3,9 @@ import PageTransition from './PageTransition'
 import { Data } from '../pages/Profile'
 import { useState } from 'react'
 import Swal from 'sweetalert2'
+import { useNavigate } from 'react-router-dom'
 
-function ProfileEdit() {
+function ProfileEdit({setActiveSection}) {
 
     const [username, setUserName] = useState(Data.username || '')
     const [email, setEamil] = useState(Data.email || '')
@@ -12,6 +13,7 @@ function ProfileEdit() {
     const [zip, setZip] = useState(Data.zip || '')
     const [city, setCity] = useState(Data.city || '')
     const [country, setCountery] = useState(Data.country || '')
+    const navigate = useNavigate()
 
     const newData = {
         username,
@@ -98,7 +100,7 @@ function ProfileEdit() {
                 }
             }).then(() => {
                 setTimeout(() => {
-                    window.location.reload()
+                    setActiveSection('overview')
                 }, 200)
             })
         })

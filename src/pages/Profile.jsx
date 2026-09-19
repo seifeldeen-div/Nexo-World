@@ -179,7 +179,7 @@ function Profile() {
                         <div className="profileContent">
                             {/* <ProfileOverview /> */}
                             {activeSection === "overview" && <ProfileOverview />}
-                            {activeSection === "edit" && <ProfileEdit />}
+                            {activeSection === "edit" && <ProfileEdit setActiveSection={setActiveSection}  />}
                             {activeSection === "orders" && <Orders />}
                             {activeSection === "wishlist" && <ProfileWishList />}
                             {activeSection === "addresses" && <Addresses />}
