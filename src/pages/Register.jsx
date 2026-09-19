@@ -9,6 +9,31 @@ import toast, { Toaster } from "react-hot-toast"
 
 function Register() {
 
+    const handleFastLoginBtn = () => {
+        toast(
+            <div className="developing-toast">
+                <div className="developing-icon">
+                    <span>⚙</span>
+                </div>
+
+                <div className="developing-content">
+                    <span className="developing-title">UNDER DEVELOPING</span>
+                    <span className="developing-text">
+                        This feature is coming soon
+                    </span>
+                </div>
+            </div>,
+            {
+                duration: 1800,
+                style: {
+                    padding: "0",
+                    background: "transparent",
+                    boxShadow: "none",
+                },
+            }
+        );
+    }
+
     const [showPassword, setShowPassword] = useState(false)
 
     const [username, setUsername] = useState("")
@@ -189,9 +214,9 @@ function Register() {
                                 </div>
 
                                 <div className="registerSocials">
-                                    <button type="button" className="registerSocial google"><FaGoogle /> Google</button>
-                                    <button type="button" className="registerSocial apple"><FaApple /> Apple</button>
-                                    <button type="button" className="registerSocial facebook"><FaFacebookF /> Facebook</button>
+                                    <button onClick={handleFastLoginBtn} type="button" className="registerSocial google"><FaGoogle /> Google</button>
+                                    <button onClick={handleFastLoginBtn} type="button" className="registerSocial apple"><FaApple /> Apple</button>
+                                    <button onClick={handleFastLoginBtn} type="button" className="registerSocial facebook"><FaFacebookF /> Facebook</button>
                                 </div>
                             </form>
 

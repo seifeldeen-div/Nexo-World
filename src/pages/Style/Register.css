@@ -1,3 +1,99 @@
+.developing-toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 290px;
+    padding: 14px 18px;
+
+    background: var(--white-color);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--main-color);
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 30px rgba(37, 50, 55, 0.12);
+
+    font-family: var(--Inter-font-family);
+
+    animation: toastSlideIn 0.3s ease-out;
+}
+
+.developing-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    background: rgba(0, 144, 240, 0.1);
+    color: var(--main-color);
+
+    font-size: 18px;
+
+    animation: gearRotate 2s linear infinite;
+}
+
+.developing-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.developing-title {
+    color: var(--color-heading);
+
+    font-family: var(--DM-font-family);
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+}
+
+.developing-text {
+    color: var(--p-color);
+
+    font-size: 11px;
+    font-weight: 400;
+}
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes gearRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 .registerPage {
     position: relative;
     overflow: hidden;
