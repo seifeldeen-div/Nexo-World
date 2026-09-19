@@ -67,7 +67,7 @@ Contributions, issues and feature requests are welcome!
 
 ###  Developer
 
-Developed  **Eng. Saif El-Deen (المهندس سيف الدين)**.
+Developed by **<a href='https://www.linkedin.com/in/seifeldeen-div/'>Eng. Saif El-Deen (المهندس سيف الدين)</a>**.
 
 ⭐ If you like this project, don't forget to give it a star! | لو أعجبك المشروع، لا تنسَ وضع نجمة ⭐
 
