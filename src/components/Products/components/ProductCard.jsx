@@ -6,6 +6,7 @@ import { CartContext } from "../../context/CartContext";
 import '../Products.css'
 import toast from "react-hot-toast";
 import { wishContext } from "../../context/WishlistContext";
+import { div } from "framer-motion/client";
 
 // https://dummyjson.com/products/1
 
@@ -23,6 +24,7 @@ function ProductCard(props) {
     const { cartItems, addToCart } = useContext(CartContext)
     const { wishlistContext, addToWish } = useContext(wishContext)
     const [heartBurst, setHeartBurst] = useState(null)
+    const [imageLoading, setImageLoading] = useState(true)
     const navigate = useNavigate()
 
     const isInCart = cartItems.some((i => i.id === props.item.id))
@@ -95,7 +97,12 @@ function ProductCard(props) {
                 )}
                 <Link to={`/products/${props.item.id}`}>
                     <div className="imgProduct">
-                        <img src={props.item.images[0]} alt={props.item.titel} />
+                        {imageLoading && (
+                                <div className="image-skeleton"></div>
+                        )}
+                        <img src={props.item.images[0]} onLoad={() => {
+                            setImageLoading(false)
+                        }} alt={props.item.titel} />
                     </div>
                     <div className="content">
                         <h3>{props.item.title.replace("-", " ")}</h3>

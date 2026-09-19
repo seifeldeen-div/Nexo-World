@@ -25,12 +25,12 @@ function Login() {
             return
         }
 
-        if (userLoginData[mail].email !== mail) {
+        if (userLoginData[mail]?.email !== mail) {
             toast.error("Email is incorrect")
             return
         }
 
-        if (userLoginData[mail].password !== password) {
+        if (userLoginData[mail]?.password !== password) {
             toast.error("Password is incorrect")
             return
         }

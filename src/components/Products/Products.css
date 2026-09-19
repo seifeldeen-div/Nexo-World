@@ -66,6 +66,8 @@
 
 /* --------------------------product style------------------ */
 
+
+
 .product {
     flex: 250px;
     overflow: hidden;
@@ -74,6 +76,7 @@
     padding: 25px 15px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
+    height: 377.5px;
 
     .statueCard {
         display: flex;
@@ -84,9 +87,12 @@
         padding: 10px 3px;
         transform: translatey(-35px);
         transition: 0.3s ease;
-        svg,span {
+
+        svg,
+        span {
             color: rgb(2, 188, 169);
         }
+
         span {
             padding: 0 3px;
             font-weight: 600;
@@ -400,6 +406,26 @@
     }
 }
 
+.image-skeleton {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    border: 4px solid #d6d6d6;
+    border-top-color: #0090f0;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .product.inCart {
 
     .statueCard {
@@ -442,6 +468,7 @@
         animation: wishBadgeBeat 1.5s ease-in-out infinite;
         transform-origin: center;
     }
+
     span {
         color: white;
     }
@@ -460,6 +487,7 @@
 }
 
 @keyframes wishBadgeBeat {
+
     0%,
     100% {
         transform: scale(1);
@@ -481,6 +509,7 @@
 .product.inWish .icons {
 
     a {
+
         &:nth-child(2),
         &.wish-active {
             background: linear-gradient(135deg, #ff2d55, #ff6f7f);

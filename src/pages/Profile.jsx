@@ -155,13 +155,13 @@ function Profile() {
                                     <em className="profileNavCount"> {wishlistContext.length} </em>
                                 </a>
 
-                                <p className="profileNavTitle">Settings</p>
-                                <a onClick={() => {
+                                <p className="profileNavTitle">log out</p>
+                                {/* <a onClick={() => {
                                     handleActiveSection(e, 'settings')
                                 }} href="#settings" className="profileNavLink">
                                     <span className="profileNavIcon"><FaCog /></span>
                                     Account settings
-                                </a>
+                                </a> */}
                                 <a onClick={(e) => {
                                     e.preventDefault()
                                     if (localStorage.getItem("loginBtnStatue") == 'true')
