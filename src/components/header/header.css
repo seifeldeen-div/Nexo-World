@@ -45,6 +45,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    bottom: 0;
     z-index: 999999;
     width: var(--sidebar-current);
     height: 100dvh;
@@ -52,6 +53,7 @@
     box-shadow: 1px 0 0 var(--border-color), 6px 0 24px rgba(37, 50, 55, 0.05);
     transition: width var(--sidebar-transition);
     will-change: width;
+    overflow-y: auto;
 }
 
 .sidebarOverlay {
