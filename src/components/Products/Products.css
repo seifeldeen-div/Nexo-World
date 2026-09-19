@@ -76,7 +76,7 @@
     padding: 25px 15px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    height: 397.5px;
+    height: 385.5px;
 
     .statueCard {
         display: flex;
@@ -192,7 +192,7 @@
         position: relative;
         padding: 0 20px;
         margin-bottom: 30px;
-        height: 250px;
+        height: 220px;
 
         /* // Image glow */
         &::after {
