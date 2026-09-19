@@ -8,8 +8,7 @@
 [![Live Demo](https://img.shields.io/badge/Live-Demo-success?style=for-the-badge&logo=vercel)](https://nexo-world-eight.vercel.app/)
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)](https://nexo-world-eight.vercel.app/)
 
-[ Live Demo](https://nexo-world-eight.vercel.app/) • [English](#-english) • [العربية](#-العربية)
-
+[ Live Demo](https://nexo-world-eight.vercel.app/)
 </div>
 
 ---
