@@ -192,6 +192,7 @@
         position: relative;
         padding: 0 20px;
         margin-bottom: 30px;
+        height: 250px;
 
         /* // Image glow */
         &::after {
