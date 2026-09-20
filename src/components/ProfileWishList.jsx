@@ -188,7 +188,7 @@ function ProfileWishList() {
                                         <Link to={`/products/${item.id}`} className="profileWishTitleLink">
                                             <strong>{item.title.replace("-", " ")}</strong>
                                         </Link>
-                                        <p>{item.description}</p>
+                                        <p>{`${item.description.slice(0,30)}.......`}</p>
                                     </div>
 
                                     <div className="profileOrderStatus">

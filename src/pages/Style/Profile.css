@@ -1407,7 +1407,7 @@
     }
 
     .profileWishRow .profileWishRowActions {
-        justify-self: start;
+        justify-self: end;
     }
 
     .profileWishHeartBurst {

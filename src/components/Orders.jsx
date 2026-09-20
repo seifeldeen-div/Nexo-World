@@ -47,7 +47,7 @@ function Orders() {
                             </div>
                             <div className="profileOrderMain">
                                 <strong>{item.title}</strong>
-                                <p> {`${item.description.slice(0,55)}.....`} </p>
+                                <p> {`${item.description.slice(0,30)}.....`} </p>
                             </div>
                             {/* <div className="profileOrderDate">
                                 <span>Placed on</span>
@@ -62,44 +62,6 @@ function Orders() {
                             </div>
                         </div>
                     })}
-
-                    {/* <div className="profileOrderItem">
-                        <div className="profileOrderIcon"><FaBoxOpen /></div>
-                        <div className="profileOrderMain">
-                            <strong>#NEX-102803</strong>
-                            <p>Running Sneakers · Yoga Mat</p>
-                        </div>
-                        <div className="profileOrderDate">
-                            <span>Placed on</span>
-                            <strong>Sep 03, 2026</strong>
-                        </div>
-                        <div className="profileOrderStatus">
-                            <span className="profileOrderStatusTag shipping"><FaTruck /> Shipping</span>
-                        </div>
-                        <div className="profileOrderTotal">
-                            <span>Total</span>
-                            <strong>$159.40</strong>
-                        </div>
-                    </div>
-
-                    <div className="profileOrderItem">
-                        <div className="profileOrderIcon"><FaBoxOpen /></div>
-                        <div className="profileOrderMain">
-                            <strong>#NEX-102761</strong>
-                            <p>Minimal Backpack · Water Bottle</p>
-                        </div>
-                        <div className="profileOrderDate">
-                            <span>Placed on</span>
-                            <strong>Aug 21, 2026</strong>
-                        </div>
-                        <div className="profileOrderStatus">
-                            <span className="profileOrderStatusTag"><FaCheckCircle /> Delivered</span>
-                        </div>
-                        <div className="profileOrderTotal">
-                            <span>Total</span>
-                            <strong>$89.70</strong>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </PageTransition>
