@@ -98,11 +98,11 @@ function ProductCard(props) {
                 <Link to={`/products/${props.item.id}`}>
                     <div className="imgProduct">
                         {imageLoading && (
-                                <div className="image-skeleton"></div>
+                            <div className="image-skeleton"></div>
                         )}
                         <img src={props.item.images[0]} onLoad={() => {
                             setImageLoading(false)
-                        }} alt={props.item.titel} />
+                        }} alt={props.item.title} />
                     </div>
                     <div className="content">
                         <h3>{props.item.title.replace("-", " ")}</h3>
@@ -168,7 +168,9 @@ function ProductCard(props) {
                         );
                     }} to={'./'} aria-label="Share product"><FaShare /></Link>
                 </div>
-                <button className="btn">Buy Now</button>
+                <button onClick={() => {
+                    navigate(`/products/${props.item.id}`)
+                }} className="btn">Buy Now</button>
             </div>
         </>
     )

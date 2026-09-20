@@ -208,7 +208,17 @@ function ProductDetailes() {
                                             </div>
                                         )}
                                     </span>
-                                    <FaShare />
+                                    <Link onClick={(e) => {
+                                        e.preventDefault()
+                                        toast(
+                                            "Under Developing",
+                                            {
+                                                duration: 1500,
+                                            },
+                                        );
+                                    }} to={'/'}>
+                                        <FaShare />
+                                    </Link>
                                 </div>
                             </div>
                         </div>
