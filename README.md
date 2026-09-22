@@ -33,7 +33,7 @@
 
 | Layer      | Technology            |
 | ---------- | --------------------- |
-| Frontend   | HTML, CSS, JavaScript |
+| Frontend   | React |
 | Hosting    | Vercel                |
 | Versioning | Git & GitHub          |
 
