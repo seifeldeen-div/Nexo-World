@@ -6,7 +6,8 @@ import { CartContext } from "../../context/CartContext";
 import '../Products.css'
 import toast from "react-hot-toast";
 import { wishContext } from "../../context/WishlistContext";
-import { div } from "framer-motion/client";
+
+import { handleFastLoginBtn } from "../../../pages/Register";
 
 // https://dummyjson.com/products/1
 
@@ -160,12 +161,7 @@ function ProductCard(props) {
                     </Link>
                     <Link onClick={(e) => {
                         e.preventDefault()
-                        toast(
-                            "Under Developing",
-                            {
-                                duration: 1500,
-                            },
-                        );
+                        handleFastLoginBtn()
                     }} to={'./'} aria-label="Share product"><FaShare /></Link>
                 </div>
                 <button onClick={() => {

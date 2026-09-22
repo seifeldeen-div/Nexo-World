@@ -12,6 +12,8 @@ import { CartContext } from "../components/context/CartContext";
 import toast from "react-hot-toast";
 import { wishContext } from "../components/context/WishlistContext";
 
+import { handleFastLoginBtn } from "./Register";
+
 const HEART_BURST = [
     { dx: -30, dy: -84, r: -26, d: 0 },
     { dx: 30, dy: -84, r: 26, d: 0.05 },
@@ -210,12 +212,7 @@ function ProductDetailes() {
                                     </span>
                                     <Link onClick={(e) => {
                                         e.preventDefault()
-                                        toast(
-                                            "Under Developing",
-                                            {
-                                                duration: 1500,
-                                            },
-                                        );
+                                        handleFastLoginBtn()
                                     }} to={'/'}>
                                         <FaShare />
                                     </Link>
